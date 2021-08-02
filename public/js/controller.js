@@ -25,6 +25,18 @@ var Relay_StateMobile = document.getElementById("pcState_mobile");
 var Relay_StatePC = document.getElementById("pcState_pc");
 
 //////////////////////////
+///////Resonses//////////
+////////////////////////
+
+//PC Respones
+var Relay_ResponseMobile = document.getElementById("relayResponse_mobile");
+var Relay_ResponsePC = document.getElementById("relayResponse_pc");
+
+//Relay Respones
+var PC_ResponseMobile = document.getElementById("pcResponse_mobile");
+var PC_ResponsePC = document.getElementById("pcResponse_pc");
+
+//////////////////////////
 ///////Events////////////
 ////////////////////////
 
@@ -40,6 +52,9 @@ Relay_Form.addEventListener("submit", function (e) {
 
         Relay_Firstname.value = "";
         Relay_Password.value = "";
+
+        Relay_Firstname.classList.remove("valid");
+        Relay_Password.classList.remove("valid");
     }
 });
 
@@ -55,6 +70,9 @@ PC_Form.addEventListener("submit", function (e) {
 
         PC_Firstname.value = "";
         PC_Password.value = "";
+
+        PC_Firstname.classList.remove("valid");
+        PC_Password.classList.remove("valid");
     }
 });
 
@@ -78,4 +96,26 @@ socket.on("pc_state-update", (pcOn) => {
         : "<span style='color: red;'>Current State: OFF</span>";
     Relay_StateMobile.innerHTML = state;
     Relay_StatePC.innerHTML = state;
+});
+
+//////////////////////////
+///////Event Responses///
+////////////////////////
+
+// Relay Event Response
+socket.on("relay-event-response", (pcOn) => {
+    Relay_ResponsePC.innerHTML = "Closed";
+    Relay_ResponsePC.classList.remove("hidden");
+
+    Relay_ResponseMobile.innerHTML = "Closed";
+    Relay_ResponseMobile.classList.remove("hidden");
+});
+
+// PC Event Response
+socket.on("pc-event-response", (pcOn) => {
+    PC_ResponsePC.innerHTML = "Toggled";
+    PC_ResponsePC.classList.remove("hidden");
+
+    PC_ResponseMobile.innerHTML = "Toggled";
+    PC_ResponseMobile.classList.remove("hidden");
 });

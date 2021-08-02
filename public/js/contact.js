@@ -9,8 +9,12 @@ var Contact_Email = document.getElementById("email_contact");
 var Contact_Message = document.getElementById("message_contact");
 
 //////////////////////////
-///////Current States////
+///////Resonses//////////
 ////////////////////////
+
+//PC Respones
+var Form_ResponseMobile = document.getElementById("formResponse_mobile");
+var Form_ResponsePC = document.getElementById("formResponse_pc");
 
 //////////////////////////
 ///////Events////////////
@@ -31,6 +35,10 @@ Contact_Form.addEventListener("submit", function (e) {
         Contact_Name.value = "";
         Contact_Email.value = "";
         Contact_Message.value = "";
+
+        Contact_Name.classList.remove("valid");
+        Contact_Email.classList.remove("valid");
+        Contact_Message.classList.remove("valid");
     }
 });
 
@@ -50,4 +58,17 @@ socket.on("pc_state-update", (pcOn) => {
     state = pcOn
         ? "<span style='color: green;'>Current State: ON</span>"
         : "<span style='color: red;'>Current State: OFF</span>";
+});
+
+//////////////////////////
+///////Event Responses///
+////////////////////////
+
+// Relay Event Response
+socket.on("form-event-response", (pcOn) => {
+    Form_ResponsePC.innerHTML = "Send";
+    Form_ResponsePC.classList.remove("hidden");
+
+    Form_ResponseMobile.innerHTML = "Send";
+    Form_ResponseMobile.classList.remove("hidden");
 });

@@ -239,3 +239,7 @@ input:-webkit-autofill:active {
 .marginRight {
     margin-right: 10vw;
 }
+
+.hidden {
+    display: none;
+}

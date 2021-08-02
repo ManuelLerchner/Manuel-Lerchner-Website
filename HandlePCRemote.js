@@ -30,12 +30,12 @@ class PCRemote {
     }
 
     on() {
-        console.log("Turn ON PC");
+        console.log("Turn PC ON");
         this.execCommand(this.wakeupCommand);
     }
 
     off() {
-        console.log("Turn OFF PC");
+        console.log("Turn PC OFF");
         this.execCommand(this.shutdownCommand);
     }
 }

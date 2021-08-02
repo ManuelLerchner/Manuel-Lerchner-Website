@@ -35,13 +35,16 @@ class HandleIO {
             socket.on("relay authentification", (data) => {
                 var { username, password } = data;
 
-                console.log(username, password);
+                var authenticated = true;
 
-                this.activateRelay(process.env.RELAY_ON_TIME);
-                sendMail(
-                    "RaspberryPi Door-Service",
-                    `${username} just opened Door!`
-                );
+                if (authenticated) {
+                    socket.emit("relay-event-response");
+                    this.activateRelay(process.env.RELAY_ON_TIME);
+                    sendMail(
+                        "RaspberryPi Door-Service",
+                        `${username} just opened Door!`
+                    );
+                }
             });
 
             //PC Authentification
@@ -50,13 +53,18 @@ class HandleIO {
 
                 console.log(username, password);
 
-                this.togglePCState();
+                var authenticated = true;
+
+                if (authenticated) {
+                    socket.emit("pc-event-response");
+                    this.togglePCState();
+                }
             });
 
             //Contact Form
             socket.on("contact form", (data) => {
                 var { username, email, message } = data;
-                console.log(username, email, message);
+                socket.emit("form-event-response");
                 sendMail(
                     "RaspberryPi Messenger-Service",
                     `${username} / ${email} just send a Message! \n\n${message}`

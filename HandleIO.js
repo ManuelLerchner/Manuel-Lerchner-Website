@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const RelayGPIO = require("./HandleGPIO.js");
 const PCRemote = require("./HandlePCRemote.js");
-const sendMail = require("./HandleEmail.js");
+const sendMail = require("./HandleEMail.js");
 
 dotenv.config({ path: "./config/config.env" });
 

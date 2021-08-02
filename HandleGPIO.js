@@ -1,23 +1,24 @@
-const gpio = require("gpio");
+const Gpio = require("onoff").Gpio;
 const dotenv = require("dotenv");
 
 dotenv.config({ path: "./config/config.env" });
 
+const LED = new Gpio(process.env.RELAY_PIN, "out");
+LED.writeSync(1); // Initially OFF
+
 class RelayGPIO {
     constructor() {
-        this.relayGPIO = gpio.export(process.env.RELAY_PIN, {
-            direction: gpio.DIRECTION.OUT
-        });
+        LED.writeSync(1); // Initially OFF
     }
 
     on() {
-        this.relayGPIO.set();
-        console.log("turn Relay ON");
+        LED.writeSync(0);
+        console.log("Turn Relay ON");
     }
 
     off() {
-        this.relayGPIO.set(0);
-        console.log("turn Relay OFF");
+        LED.writeSync(1);
+        console.log("Turn Relay OFF");
     }
 }
 

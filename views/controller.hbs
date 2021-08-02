@@ -1,0 +1,263 @@
+<html lang="en">
+    <head>
+        <title>Controller</title>
+        <script>
+            document.getElementById("nav-controller").classList.add("activePage")
+        </script>
+        <script defer src="/js/controller.js"></script>
+
+    </head>
+
+    <body class="bg">
+
+        <!-- First Parallax  -->
+        <div id="index-banner" class="parallax-container border paralaxBig">
+            <div class="top">
+                <div class="container">
+
+                    <h1 class="header center white-text text-lighten-2 bold">
+                        Controller</h1>
+
+                    <h5 class="subtext center white-text text-lighten-2">Here
+                        you can interact with some reallife things i built</h5>
+
+                </div>
+            </div>
+
+            <div class="parallax"><img
+                    class="blurr"
+                    src="./images/raspberry.jpg"
+                /></div>
+        </div>
+
+        <!-- Relay Card  -->
+        <div class="row">
+            <div class="col l10 s12 offset-l1">
+
+                <div class="card horizontal blue-grey darken-4">
+                    <!-- Image  -->
+                    <div class="card-image hide-on-med-and-down">
+                        <img class="controllerImage" src="./images/relay.jpg" />
+                    </div>
+                    <div class="card-stacked">
+
+                        <!-- Description  -->
+                        <div class="row">
+                            <div class="row hide-on-med-and-up">
+                                <div class="col s12 offset-s1">
+                                    <h5
+                                        class="orange-text controllerTitle"
+                                    >Relay</h5>
+                                    <h5
+                                        class="light-blue-text controllerInfo"
+                                        id="relayState_mobile"
+                                    >Current State: ???</h5>
+
+                                </div>
+                            </div>
+                            <div
+                                class="col l3 offset-l1 s12 offset-s1 hide-on-small-only"
+                            >
+                                <h5
+                                    class="orange-text controllerTitle"
+                                >Relay</h5>
+                                <h5
+                                    class="light-blue-text controllerInfo"
+                                    id="relayState_pc"
+                                >Current State: ???</h5>
+                                <p
+                                    class="grey-text text-lighten-4 hide-on-med-and-down controllerText"
+                                >Here you can close a relay at my home.
+                                </p>
+                            </div>
+
+                            <!-- Login -->
+                            <form
+                                id="form_relay"
+                                method="POST"
+                                action="/controller/api"
+                            >
+                                <div class="row">
+                                    <div class="col s10 l7">
+
+                                        <!-- FirstName -->
+                                        <div
+                                            class="input-field col s12 offset-s1"
+                                        >
+                                            <i
+                                                class="material-icons prefix"
+                                            >people</i>
+                                            <input
+                                                id="first_name_relay"
+                                                name="first_name_relay"
+                                                type="text"
+                                                class="validate white-text"
+                                            />
+                                            <label
+                                                for="first_name_relay"
+                                            >Name</label>
+                                        </div>
+
+                                        <!-- Password -->
+                                        <div
+                                            class="input-field col s12 offset-s1"
+                                        >
+                                            <i
+                                                class="material-icons prefix"
+                                            >mode_edit</i>
+                                            <input
+                                                id="password_relay"
+                                                name="password_relay"
+                                                type="password"
+                                                class="validate white-text"
+                                            />
+                                            <label
+                                                for="password_relay"
+                                            >Password</label>
+                                        </div>
+
+                                        <!-- Button -->
+                                        <div
+                                            class="input-field col s12 offset-s1 white-text"
+                                        >
+                                            <i
+                                                class="material-icons Small prefix"
+                                            >send</i>
+                                            <button
+                                                class="btn-small waves-effect waves-light buttonOffsetLeft"
+                                                type="submit"
+                                                name="action"
+                                                value="Relay"
+                                            >
+                                                Close
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PC CARD -->
+        <div class="row">
+            <div class="col l10 s12 offset-l1">
+
+                <div class="card horizontal blue-grey darken-4">
+
+                    <!-- Image  -->
+                    <div class="card-image hide-on-med-and-down">
+                        <img class="controllerImage" src="./images/PC.jpg" />
+                    </div>
+                    <div class="card-stacked">
+
+                        <!-- Description  -->
+                        <div class="row">
+                            <div class="row hide-on-med-and-up">
+                                <div class="col s12 offset-s1">
+                                    <h5
+                                        class="orange-text controllerTitle"
+                                    >PC</h5>
+                                    <h5
+                                        class="light-blue-text controllerInfo"
+                                        id="pcState_mobile"
+                                    >Current State: ???</h5>
+
+                                </div>
+                            </div>
+                            <div
+                                class="col l3 offset-l1 s12 offset-s1 hide-on-small-only"
+                            >
+                                <h5 class="orange-text controllerTitle">PC</h5>
+                                <h5
+                                    class="light-blue-text controllerInfo"
+                                    id="pcState_pc"
+                                >Current State: ???</h5>
+
+                                <p
+                                    class="grey-text text-lighten-4 hide-on-med-and-down controllerText"
+                                >Here you can toggle my PC-State from OFF to ON
+                                    or viceversa.
+                                </p>
+                            </div>
+
+                            <!-- Login -->
+                            <form
+                                id="form_pc"
+                                method="POST"
+                                action="/controller/api"
+                            >
+                                <div class="row">
+                                    <div class="col s10 l7">
+
+                                        <!-- FirstName -->
+                                        <div
+                                            class="input-field col s12 offset-s1"
+                                        >
+                                            <i
+                                                class="material-icons prefix"
+                                            >people</i>
+                                            <input
+                                                id="first_name_pc"
+                                                name="first_name_pc"
+                                                type="text"
+                                                class="validate white-text"
+                                            />
+                                            <label
+                                                for="first_name_pc"
+                                            >Name</label>
+                                        </div>
+
+                                        <!-- Password -->
+                                        <div
+                                            class="input-field col s12 offset-s1"
+                                        >
+                                            <i
+                                                class="material-icons prefix"
+                                            >mode_edit</i>
+                                            <input
+                                                id="password_pc"
+                                                name="password_pc"
+                                                type="password"
+                                                class="validate white-text"
+                                            />
+                                            <label
+                                                for="password_pc"
+                                            >Password</label>
+                                        </div>
+
+                                        <!-- Button -->
+                                        <div
+                                            class="input-field col s12 offset-s1 white-text"
+                                        >
+                                            <i
+                                                class="material-icons Small prefix"
+                                            >send</i>
+                                            <button
+                                                class="btn-small waves-effect waves-light buttonOffsetLeft"
+                                                type="submit"
+                                                name="action"
+                                                value="PC"
+                                            >
+                                                Toggle
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="title" content="Manuel Lerchner" />
+        <meta
+            name="description"
+            content="This is my personal website and a place for me to share some of the projects i am working on."
+        />
+        <meta
+            name="keywords"
+            content="Computer Science Student, Developer, Raspberry Pi"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+
+        <!-- Materialize --->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+        ></script>
+
+        <link
+            rel="stylesheet"
+            href="css/style.css"
+        />
+
+        <!-- Init Sidenav Animaion--->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                M.Sidenav.init(document.querySelectorAll('.sidenav'));
+                M.Parallax.init(document.querySelectorAll('.parallax'));
+        });
+        </script>
+
+        <!-- Fonts--->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;1,800&display=swap" rel="stylesheet">
+
+        <!-- Icons--->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+        <!-- Socket -->
+        <script defer src="/socket.io/socket.io.js"></script>
+
+        <!-- Trackink -->
+        <div style="height:0px">
+            <script defer src="http://www.geoplugin.net/javascript.gp"></script>;
+            <script defer src="/js/geolocation.js"></script>
+        </div>
+    
+    </head> 
+        {{>_header}}
+        {{{body}}}
+        {{>_footer}}
+    <body>
+
+    </body>
+</html>

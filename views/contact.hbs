@@ -1,0 +1,160 @@
+<html lang="en">
+    <head>
+        <title>Contact</title>
+        <script>
+            document.getElementById("nav-contact").classList.add("activePage")
+        </script>
+    </head>
+
+    <body class="bg">
+
+        <!-- First Parallax  -->
+        <div id="index-banner" class="parallax-container border paralaxBig">
+            <div class="top">
+                <div class="container">
+
+                    <h1 class="header center white-text text-lighten-2 bold">
+                        Contact Me</h1>
+
+                    <h5 class="subtext center white-text text-lighten-2">Here
+                        you can send me a short message or question</h5>
+
+                </div>
+            </div>
+
+            <div class="parallax"><img
+                    class="blurr"
+                    src="./images/message.jpg"
+                /></div>
+        </div>
+
+        <!-- Message Card -->
+        <div class="row">
+            <div class="col l10 s12 offset-l1 ">
+
+                <div class="card horizontal blue-grey darken-4">
+
+                    <!-- Image  -->
+                    <div class="card-image hide-on-med-and-down">
+                        <img
+                            class="controllerImageBig"
+                            src="./images/messages.jpg"
+                        />
+                    </div>
+                    <div class="card-stacked">
+
+                        <!-- Description  -->
+                        <div class="row">
+                            <div class="row hide-on-med-and-up">
+                                <div class="col s12 offset-s1">
+                                    <h5
+                                        class="orange-text controllerTitle"
+                                    >Contact me</h5>
+
+                                </div>
+                            </div>
+                            <div class="col s3 offset-s1 hide-on-small-only">
+                                <h5 class="orange-text controllerTitle">
+                                    Contact me</h5>
+
+                                <p
+                                    class="grey-text text-lighten-4 hide-on-med-and-down controllerText"
+                                >Feel free to contact me with any questions,
+                                    comments, or concerns.<br />
+                                    I will get back to you as soon as I can!
+                                </p>
+                            </div>
+
+                            <!-- Form -->
+                            <form method="POST" action="/contact/api">
+                                <div class="row">
+                                    <div class="col s10 l7">
+
+                                        <!-- Name -->
+                                        <div
+                                            class="input-field col s12 offset-s1"
+                                        >
+                                            <i
+                                                class="material-icons prefix"
+                                            >people</i>
+                                            <input
+                                                id="name_notify"
+                                                name="name_notify"
+                                                type="text"
+                                                class="validate white-text"
+                                            />
+                                            <label
+                                                for="name_notify"
+                                            >Name</label>
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div
+                                            class="input-field col s12 offset-s1"
+                                        >
+                                            <i
+                                                class="material-icons prefix"
+                                            >mail_outline</i>
+
+                                            <input
+                                                id="email_notify"
+                                                name="email_notify"
+                                                type="email"
+                                                class="validate"
+                                            />
+                                            <label
+                                                for="email_notify"
+                                            >Email</label>
+                                            <span
+                                                class="helper-text"
+                                                data-error="error"
+                                                data-success="valid"
+                                            ></span>
+                                        </div>
+
+                                        <!-- Message -->
+                                        <div
+                                            class="input-field col s12 offset-s1"
+                                        >
+                                            <i
+                                                class="material-icons prefix"
+                                            >comment</i>
+                                            <textarea
+                                                id="message_notify"
+                                                name="message_notify"
+                                                class="materialize-textarea validate"
+                                            ></textarea>
+                                            <label
+                                                for="message_notify"
+                                            >Message</label>
+                                        </div>
+
+                                        <!-- Button -->
+                                        <div
+                                            class="input-field col s12 offset-s1 white-text"
+                                        >
+                                            <i
+                                                class="material-icons Small prefix"
+                                            >send</i>
+                                            <button
+                                                class="btn-small waves-effect waves-light buttonOffsetLeft"
+                                                type="submit"
+                                                name="action"
+                                                value="Notify"
+                                            >
+                                                Send
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

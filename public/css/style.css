@@ -1,0 +1,241 @@
+@media only screen {
+    .parallax img {
+        max-height: 160%;
+    }
+}
+
+.paralaxBig {
+    height: 75vh;
+}
+
+.card {
+    margin: 40px;
+
+    box-shadow: -6px -6px 20px 10px rgb(63, 143, 123),
+        6px 6px 20px 10px rgb(212, 133, 29);
+
+    box-shadow: -6px -6px 20px 10px rgb(113, 63, 143),
+        6px 6px 20px 10px rgb(245, 141, 6);
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    border: 2px solid black;
+}
+
+.cardWelcome {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    bottom: 10%;
+    width: 70vw;
+    border-left: 10px solid #06d2e0;
+}
+
+.top {
+    padding-top: 60px;
+}
+
+.marginTop {
+    margin-top: 40px;
+}
+
+.row {
+    margin-bottom: 0px;
+}
+
+.card-title {
+    font-size: 35 !important;
+}
+
+.card-content {
+    font-size: 18 !important;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.border {
+    box-shadow: -2px -2px 2px white, -2px 2px 2px white;
+}
+
+.header {
+    font-family: "Arial", "Helvetica", "sans-serif";
+    font-size: calc(3vw + 4vh + 2vmin);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-shadow: 7px 7px 2px black;
+}
+
+.subtext {
+    font-size: calc(1vw + 2vh + 1vmin);
+    font-family: "Arial", "Helvetica", "sans-serif";
+    text-shadow: 3px 3px 2px rgb(0, 0, 0);
+}
+
+.blurr {
+    filter: blur(2px);
+}
+
+.bg {
+    background-color: #252526;
+}
+
+/* Scroll */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.activePage {
+    background-color: #565656;
+}
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+.material-icons.md-24 {
+    font-size: 24px;
+}
+.material-icons.md-36 {
+    font-size: 36px;
+}
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.youtube a {
+    color: #ff0000;
+}
+
+.twiter a {
+    color: #1da1f2;
+}
+
+.brand-logo img {
+    height: 56px;
+}
+
+.rainbow {
+    animation: rainbow 15s infinite;
+}
+
+.Logo {
+    position: relative;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Consolas, monaco, monospace;
+    width: 56px;
+}
+
+.LogoText {
+    margin-left: 60px;
+
+    font-family: Consolas, monaco, monospace;
+    font-size: 20px;
+}
+
+@keyframes rainbow {
+    from {
+        filter: invert(20%) sepia(100%) saturate(1000%);
+    }
+    to {
+        filter: invert(20%) sepia(100%) saturate(1000%) hue-rotate(360deg);
+    }
+}
+
+.validate {
+    background-color: red;
+}
+
+.btn-small {
+    margin-left: 10px;
+}
+
+.controllerTitle {
+    font-size: 30px;
+}
+
+.controllerText {
+    font-size: 15px;
+}
+
+.controllerInfo {
+    font-size: 25px;
+}
+
+.controllerImage,
+.controllerImageBig {
+    height: auto;
+    width: auto;
+    max-width: 220px;
+    max-height: 280px;
+
+    border-top-left-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+.controllerImageBig {
+    max-height: 420px;
+}
+
+input {
+    color: white;
+}
+
+.input-field span {
+    color: white;
+    font-size: 20;
+}
+
+/* icon prefix focus color */
+.input-field .prefix {
+    color: white;
+}
+
+textarea {
+    color: white;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px #263238 inset !important;
+    box-shadow: 0 0 0px 1000px #263238 inset !important;
+    -webkit-text-fill-color: white;
+}
+
+.footerText {
+    font-size: calc(0.3vw + 0.8vh + 0.5vmin);
+}
+
+.descriptionText {
+    font-size: calc(0.8vw + 0.9vh + 0.9vmin);
+}
+
+.marginLeft {
+    margin-left: 10vw;
+}
+
+.buttonOffsetLeft {
+    margin-left: 45px;
+}
+
+.marginRight {
+    margin-right: 10vw;
+}

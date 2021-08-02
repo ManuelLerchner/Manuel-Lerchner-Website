@@ -4,6 +4,7 @@ const fs = require("fs");
 
 const RelayGPIO = require("./HandleGPIO.js");
 const PCRemote = require("./HandlePCRemote.js");
+const sendMail = require("./HandleEmail.js");
 
 dotenv.config({ path: "./config/config.env" });
 
@@ -37,6 +38,10 @@ class HandleIO {
                 console.log(username, password);
 
                 this.activateRelay(process.env.RELAY_ON_TIME);
+                sendMail(
+                    "RaspberryPi Door-Service",
+                    `${username} just opened Door!`
+                );
             });
 
             //PC Authentification
@@ -46,6 +51,16 @@ class HandleIO {
                 console.log(username, password);
 
                 this.togglePCState();
+            });
+
+            //Contact Form
+            socket.on("contact form", (data) => {
+                var { username, email, message } = data;
+                console.log(username, email, message);
+                sendMail(
+                    "RaspberryPi Messenger-Service",
+                    `${username} / ${email} just send a Message! \n\n${message}`
+                );
             });
 
             //User GeoLocation

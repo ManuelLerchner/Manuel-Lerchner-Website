@@ -4,6 +4,7 @@
         <script>
             document.getElementById("nav-contact").classList.add("activePage")
         </script>
+        <script defer src="/js/contact.js"></script>
     </head>
 
     <body class="bg">
@@ -30,7 +31,7 @@
 
         <!-- Message Card -->
         <div class="row">
-            <div class="col l10 s12 offset-l1 ">
+            <div class="col l10 s12 offset-l1">
 
                 <div class="card horizontal blue-grey darken-4">
 
@@ -66,7 +67,7 @@
                             </div>
 
                             <!-- Form -->
-                            <form method="POST" action="/contact/api">
+                            <form method="POST" id="form_contact">
                                 <div class="row">
                                     <div class="col s10 l7">
 
@@ -78,13 +79,13 @@
                                                 class="material-icons prefix"
                                             >people</i>
                                             <input
-                                                id="name_notify"
-                                                name="name_notify"
+                                                id="name_contact"
+                                                name="name_contact"
                                                 type="text"
                                                 class="validate white-text"
                                             />
                                             <label
-                                                for="name_notify"
+                                                for="name_contact"
                                             >Name</label>
                                         </div>
 
@@ -97,13 +98,13 @@
                                             >mail_outline</i>
 
                                             <input
-                                                id="email_notify"
-                                                name="email_notify"
+                                                id="email_contact"
+                                                name="email_contact"
                                                 type="email"
                                                 class="validate"
                                             />
                                             <label
-                                                for="email_notify"
+                                                for="email_contact"
                                             >Email</label>
                                             <span
                                                 class="helper-text"
@@ -120,12 +121,12 @@
                                                 class="material-icons prefix"
                                             >comment</i>
                                             <textarea
-                                                id="message_notify"
-                                                name="message_notify"
+                                                id="message_contact"
+                                                name="message_contact"
                                                 class="materialize-textarea validate"
                                             ></textarea>
                                             <label
-                                                for="message_notify"
+                                                for="message_contact"
                                             >Message</label>
                                         </div>
 

@@ -1,13 +1,17 @@
 {
     "name": "manuellerchner-website",
     "version": "1.0.0",
-    "description": "",
+    "description": "Personal Website",
     "main": "app.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ManuelLerchner/Manuel-Lerchner-Website.git"
+    },
     "scripts": {
         "start": "cross-env NODE_ENV=production node app.js",
         "dev": "cross-env NODE_ENV=developement nodemon app.js"
     },
-    "author": "",
+    "author": "Manuel Lerchner",
     "license": "ISC",
     "dependencies": {
         "dotenv": "^10.0.0",

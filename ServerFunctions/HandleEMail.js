@@ -26,7 +26,7 @@ class EMail {
                 text: text
             };
 
-            transporter.sendMail(mailOptions, function (error, info) {
+            this.transporter.sendMail(mailOptions, function (error, info) {
                 if (error) {
                     console.log(error);
                 } else {

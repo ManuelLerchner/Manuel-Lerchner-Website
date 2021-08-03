@@ -117,6 +117,10 @@ body {
     color: #1da1f2;
 }
 
+.github a {
+    color: aliceblue;
+}
+
 .brand-logo img {
     height: 56px;
 }

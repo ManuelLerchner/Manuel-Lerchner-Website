@@ -46,10 +46,15 @@ app.use("/about", require("./routes/about"));
 app.use("/register", require("./routes/register"));
 app.use("/api", require("./routes/api"));
 
+var PORT =
+    process.env.NODE_ENV == "developement"
+        ? process.env.DEV_PORT
+        : process.env.PORT;
+
 //Run App
 server.listen(
-    process.env.PORT,
+    PORT,
     console.log(
-        `Server running in ${process.env.NODE_ENV} mode on http://localhost:${process.env.PORT}`
+        `Server running in ${process.env.NODE_ENV} mode on http://localhost:${PORT}`
     )
 );

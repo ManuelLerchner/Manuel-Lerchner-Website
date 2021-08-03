@@ -10,8 +10,6 @@ var password = process.env.PW_MIC_PC;
 var ip = process.env.PC_IP;
 var mac = process.env.PC_MAC;
 
-console.log(username + " " + password + " " + ip + " " + mac);
-
 class PCRemote {
     constructor() {
         this.shutdownCommand = `net rpc shutdown -t 30 -U ${username}%${password} -I ${ip}`;

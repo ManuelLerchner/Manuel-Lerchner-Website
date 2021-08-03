@@ -1,10 +1,16 @@
 const { exec } = require("child_process");
+const dotenv = require("dotenv");
+
+//Config
+dotenv.config({ path: "./config/config.env" });
 
 //Secrets
 var username = process.env.UN_MIC_PC;
 var password = process.env.PW_MIC_PC;
 var ip = process.env.PC_IP;
 var mac = process.env.PC_MAC;
+
+console.log(username + " " + password + " " + ip + " " + mac);
 
 class PCRemote {
     constructor() {

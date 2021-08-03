@@ -1,3 +1,8 @@
+const dotenv = require("dotenv");
+
+//Config
+dotenv.config({ path: "./config/config.env" });
+
 try {
     const Gpio = require("onoff").Gpio;
 

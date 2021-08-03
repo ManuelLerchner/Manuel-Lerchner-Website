@@ -1,4 +1,8 @@
 const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
+
+//Config
+dotenv.config({ path: "./config/config.env" });
 
 class EMail {
     constructor() {

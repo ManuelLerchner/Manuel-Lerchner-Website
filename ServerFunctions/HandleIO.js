@@ -1,10 +1,14 @@
 const ping = require("ping");
 const fs = require("fs");
+const dotenv = require("dotenv");
 
 const GPIO = require("./HandleGPIO.js");
 const PCRemote = require("./HandlePCRemote.js");
 const Authentification = require("./HandleAuthentification.js");
 const EmailService = require("./HandleEMail.js");
+
+//Config
+dotenv.config({ path: "./config/config.env" });
 
 const Relay = new GPIO();
 const PC = new PCRemote();

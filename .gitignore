@@ -15,3 +15,5 @@ desktop.ini
 
 node_modules/
 accesslog.txt
+
+*.pem

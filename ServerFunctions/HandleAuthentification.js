@@ -1,4 +1,4 @@
-const User = require("../model/User");
+const User = require("../database/User");
 
 const EMailService = require("./HandleEMail.js");
 const Email = new EMailService();

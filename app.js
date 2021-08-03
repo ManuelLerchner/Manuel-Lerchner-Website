@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const path = require("path");
 const socket = require("socket.io");
 const http = require("http");
+const https = require("https");
+const fs = require("fs");
 
 const HandleIO = require("./ServerFunctions/HandleIO.js");
 
@@ -11,16 +13,10 @@ const HandleIO = require("./ServerFunctions/HandleIO.js");
 dotenv.config({ path: "./config/config.env" });
 
 //Connect DB
-require("./config/db");
+require("./database/db");
 
-//Create Servers
+//Create Express App
 const app = express();
-const server = http.createServer(app);
-const io = socket(server);
-
-//Start IO
-const IO = new HandleIO(io);
-IO.handleEvents();
 
 //Static
 app.use(express.static(path.join(__dirname, "public")));
@@ -46,15 +42,41 @@ app.use("/about", require("./routes/about"));
 app.use("/register", require("./routes/register"));
 app.use("/api", require("./routes/api"));
 
-var PORT =
-    process.env.NODE_ENV == "developement"
-        ? process.env.DEV_PORT
-        : process.env.PORT;
+//Load HTTPS Certificates
+const httpsOptions = {
+    key: fs.readFileSync("./config/key.pem"),
+    cert: fs.readFileSync("./config/cert.pem")
+};
 
-//Run App
-server.listen(
-    PORT,
+//Create Servers
+const serverHTTP = http.createServer(app);
+const serverHTTPS = https.createServer(httpsOptions, app);
+const ioHTTP = socket(serverHTTP);
+const ioHTTPS = socket(serverHTTPS);
+
+//Start IO
+const IOHTTP = new HandleIO(ioHTTP);
+const IOHTTPS = new HandleIO(ioHTTPS);
+IOHTTP.handleEvents();
+IOHTTPS.handleEvents();
+
+//Ports
+var [HTTP_PORT, HTTPS_PORT] =
+    process.env.NODE_ENV == "developement"
+        ? [process.env.HTTP_DEV_PORT, process.env.HTTPS_DEV_PORT]
+        : [process.env.HTTP_PORT, process.env.HTTPS_PORT];
+
+//Run Servers
+serverHTTP.listen(
+    HTTP_PORT,
     console.log(
-        `Server running in ${process.env.NODE_ENV} mode on http://localhost:${PORT}`
+        `HTTP_Server running in ${process.env.NODE_ENV} mode on http://localhost:${HTTP_PORT}`
+    )
+);
+
+serverHTTPS.listen(
+    HTTPS_PORT,
+    console.log(
+        `HTTPS_Server running in ${process.env.NODE_ENV} mode on https://localhost:${HTTPS_PORT}`
     )
 );

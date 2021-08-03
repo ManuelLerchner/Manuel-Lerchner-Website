@@ -37,6 +37,10 @@
     border-left: 10px solid #06d2e0;
 }
 
+.card-title {
+    font-size: 40px !important;
+}
+
 .top {
     padding-top: 60px;
 }
@@ -50,11 +54,11 @@
 }
 
 .card-title {
-    font-size: 35 !important;
+    font-size: 30 !important;
 }
 
 .card-content {
-    font-size: 18 !important;
+    font-size: 25 !important;
 }
 
 .bold {

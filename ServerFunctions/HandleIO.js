@@ -93,7 +93,7 @@ class HandleIO {
                     .replace(/\..+/, "");
 
                 var str = dateTime + " " + JSON.stringify(data) + "\n";
-                fs.appendFile("./logs/acesslog.txt", str, function (err) {
+                fs.appendFile("./logs/accesslog.txt", str, function (err) {
                     if (err) return console.log(err);
                 });
             });

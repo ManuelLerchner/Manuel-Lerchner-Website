@@ -1,13 +1,17 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const http = require("http");
 const dotenv = require("dotenv");
 const path = require("path");
 const socket = require("socket.io");
+const http = require("http");
 
-const HandleIO = require("./HandleIO.js");
+const HandleIO = require("./ServerFunctions/HandleIO.js");
 
+//Config
 dotenv.config({ path: "./config/config.env" });
+
+//Connect DB
+require("./config/db");
 
 //Create Servers
 const app = express();
@@ -20,6 +24,9 @@ IO.handleEvents();
 
 //Static
 app.use(express.static(path.join(__dirname, "public")));
+
+//bodyParser
+app.use(express.urlencoded({ extended: false }));
 
 //Handlebar
 app.set("view engine", "hbs");
@@ -36,12 +43,13 @@ app.use("/", require("./routes/home"));
 app.use("/controller", require("./routes/controller"));
 app.use("/contact", require("./routes/contact"));
 app.use("/about", require("./routes/about"));
+app.use("/register", require("./routes/register"));
+app.use("/api", require("./routes/api"));
 
 //Run App
-PORT = process.env.PORT;
 server.listen(
-    PORT,
+    process.env.PORT,
     console.log(
-        `Server running in ${process.env.NODE_ENV} mode on http://localhost:${PORT}`
+        `Server running in ${process.env.NODE_ENV} mode on http://localhost:${process.env.PORT}`
     )
 );

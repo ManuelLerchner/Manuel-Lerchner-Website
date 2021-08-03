@@ -1,16 +1,15 @@
 const ping = require("ping");
-const dotenv = require("dotenv");
 const fs = require("fs");
 
-const RelayGPIO = require("./HandleGPIO.js");
+const GPIO = require("./HandleGPIO.js");
 const PCRemote = require("./HandlePCRemote.js");
-const sendMail = require("./HandleEMail.js");
+const Authentification = require("./HandleAuthentification.js");
+const EmailService = require("./HandleEMail.js");
 
-dotenv.config({ path: "./config/config.env" });
-
-//Interaction Objects
-const Relay = new RelayGPIO();
+const Relay = new GPIO();
 const PC = new PCRemote();
+const Auth = new Authentification();
+const Email = new EmailService();
 
 //Initial States
 var relayState = false;
@@ -33,42 +32,57 @@ class HandleIO {
 
             //Relay Authentification
             socket.on("relay authentification", (data) => {
-                var { username, password } = data;
+                Auth.login(data).then(([success, response]) => {
+                    var htmlResponse = `<span style='color: ${
+                        success ? "green" : "red"
+                    };'>${response}</span>`;
 
-                var authenticated = true;
+                    socket.emit("relay-event-response", htmlResponse);
 
-                if (authenticated) {
-                    socket.emit("relay-event-response");
-                    this.activateRelay(process.env.RELAY_ON_TIME);
-                    sendMail(
-                        "RaspberryPi Door-Service",
-                        `${username} just opened Door!`
-                    );
-                }
+                    if (success) {
+                        this.activateRelay(process.env.RELAY_ON_TIME);
+                        Email.sendMail(
+                            "RaspberryPi Door-Service",
+                            `${data.username} just opened Door!`
+                        );
+                    }
+                });
             });
 
             //PC Authentification
             socket.on("pc authentification", (data) => {
-                var { username, password } = data;
+                Auth.login(data).then(([success, response]) => {
+                    var htmlResponse = `<span style='color: ${
+                        success ? "green" : "red"
+                    };'>${response}</span>`;
 
-                console.log(username, password);
+                    socket.emit("pc-event-response", htmlResponse);
 
-                var authenticated = true;
-
-                if (authenticated) {
-                    socket.emit("pc-event-response");
-                    this.togglePCState();
-                }
+                    if (success) {
+                        this.togglePCState();
+                    }
+                });
             });
 
             //Contact Form
             socket.on("contact form", (data) => {
                 var { username, email, message } = data;
                 socket.emit("form-event-response");
-                sendMail(
+                Email.sendMail(
                     "RaspberryPi Messenger-Service",
                     `${username} / ${email} just send a Message! \n\n${message}`
                 );
+            });
+
+            //Register Form
+            socket.on("register form", (data) => {
+                Auth.register(data).then(([success, response]) => {
+                    var htmlResponse = `<span style='color: ${
+                        success ? "green" : "red"
+                    };'>${response}</span>`;
+
+                    socket.emit("registration-event-response", htmlResponse);
+                });
             });
 
             //User GeoLocation
@@ -78,11 +92,8 @@ class HandleIO {
                     .replace(/T/, " ")
                     .replace(/\..+/, "");
 
-                var { ip, city, region, country, long, lat } = data;
-
-                var str = `date=${dateTime}, ip=${ip}, city=${city}, region=${region}, country=${country}, long=${long}, lat=${lat}\n`;
-
-                fs.appendFile("acesslog.txt", str, function (err) {
+                var str = dateTime + " " + JSON.stringify(data) + "\n";
+                fs.appendFile("./logs/acesslog.txt", str, function (err) {
                     if (err) return console.log(err);
                 });
             });

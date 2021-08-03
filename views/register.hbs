@@ -1,10 +1,8 @@
 <html lang="en">
     <head>
-        <title>Contact</title>
-        <script>
-            document.getElementById("nav-contact").classList.add("activePage")
-        </script>
-        <script defer src="/js/contact.js"></script>
+        <title>Register</title>
+
+        <script defer src="/js/register.js"></script>
     </head>
 
     <body class="bg">
@@ -15,21 +13,20 @@
                 <div class="container">
 
                     <h1 class="header center white-text text-lighten-2 bold">
-                        Contact Me</h1>
+                        Register</h1>
 
                     <h5 class="subtext center white-text text-lighten-2">Here
-                        you can send me a short message or question</h5>
+                        you can register to access the controller</h5>
 
                 </div>
             </div>
 
-            <div class="parallax"><img
-                    class="blurr"
-                    src="./images/message.jpg"
-                /></div>
+            <div class="parallax">
+                <img class="blurr" src="./images/register.jpg" />
+            </div>
         </div>
 
-        <!-- Message Card -->
+        <!-- Register Card -->
         <div class="row">
             <div class="col l10 s12 offset-l1">
 
@@ -39,7 +36,7 @@
                     <div class="card-image hide-on-med-and-down">
                         <img
                             class="controllerImageBig"
-                            src="./images/messages.jpg"
+                            src="./images/registerSmall.jpg"
                         />
                     </div>
                     <div class="card-stacked">
@@ -50,32 +47,44 @@
                                 <div class="col s12 offset-s1">
                                     <h5
                                         class="orange-text controllerTitle"
-                                    >Contact me</h5>
+                                    >Register</h5>
                                     <h5
                                         class="light-blue-text controllerInfo hidden"
-                                        id="formResponse_mobile"
+                                        id="registerResponse_mobile"
                                     >None</h5>
+                                    <p
+                                        class="grey-text text-lighten-4 controllerText"
+                                    >Return to
+                                        <a href="/controller">Controller</a>
+                                    </p>
 
                                 </div>
                             </div>
-                            <div class="col s3 offset-s1 hide-on-small-only">
+                            <div
+                                class="col l3 offset-l1 s12 m8 offset-m1 hide-on-small-only"
+                            >
                                 <h5 class="orange-text controllerTitle">
-                                    Contact me</h5>
+                                    Register</h5>
                                 <h5
                                     class="light-blue-text controllerInfo hidden"
-                                    id="formResponse_pc"
+                                    id="registerResponse_pc"
                                 >None</h5>
                                 <p
                                     class="grey-text text-lighten-4 hide-on-med-and-down controllerText"
-                                >Feel free to contact me with any questions,
-                                    comments, or concerns.<br />
-                                    I will get back to you as soon as I can!
+                                >Here you can register on my Website to get access
+                                    the controller.<br />
+                                    If your eligible i will accept your account
+                                    as soon as possible.
                                 </p>
-
+                                <p
+                                    class="grey-text text-lighten-4 hide-on-med-and-down controllerText"
+                                >Return to
+                                    <a href="/controller">Controller</a>
+                                </p>
                             </div>
 
                             <!-- Form -->
-                            <form method="POST" id="form_contact">
+                            <form method="POST" id="register_contact">
                                 <div class="row">
                                     <div class="col s10 l7">
 
@@ -87,13 +96,13 @@
                                                 class="material-icons prefix"
                                             >people</i>
                                             <input
-                                                id="name_contact"
-                                                name="name_contact"
+                                                id="name_register"
+                                                name="name_register"
                                                 type="text"
                                                 class="validate white-text"
                                             />
                                             <label
-                                                for="name_contact"
+                                                for="name_register"
                                             >Name</label>
                                         </div>
 
@@ -106,13 +115,13 @@
                                             >mail_outline</i>
 
                                             <input
-                                                id="email_contact"
-                                                name="email_contact"
+                                                id="email_register"
+                                                name="email_register"
                                                 type="email"
                                                 class="validate"
                                             />
                                             <label
-                                                for="email_contact"
+                                                for="email_register"
                                             >Email</label>
                                             <span
                                                 class="helper-text"
@@ -121,21 +130,41 @@
                                             ></span>
                                         </div>
 
-                                        <!-- Message -->
+                                        <!-- Password 1 -->
+
                                         <div
                                             class="input-field col s12 offset-s1"
                                         >
                                             <i
                                                 class="material-icons prefix"
-                                            >comment</i>
-                                            <textarea
-                                                id="message_contact"
-                                                name="message_contact"
+                                            >mode_edit</i>
+                                            <input
+                                                id="password_register1"
+                                                name="password_register1"
                                                 class="materialize-textarea validate"
-                                            ></textarea>
+                                                type="password"
+                                            />
                                             <label
-                                                for="message_contact"
-                                            >Message</label>
+                                                for="password_register1"
+                                            >Password</label>
+                                        </div>
+
+                                        <!-- Password 2 -->
+                                        <div
+                                            class="input-field col s12 offset-s1"
+                                        >
+                                            <i
+                                                class="material-icons prefix"
+                                            >mode_edit</i>
+                                            <input
+                                                id="password_register2"
+                                                name="password_register2"
+                                                class="materialize-textarea validate"
+                                                type="password"
+                                            />
+                                            <label
+                                                for="password_register2"
+                                            >Confirm Password</label>
                                         </div>
 
                                         <!-- Button -->
@@ -149,15 +178,17 @@
                                                 class="btn-small waves-effect waves-light buttonOffsetLeft"
                                                 type="submit"
                                                 name="action"
-                                                value="Notify"
+                                                value="Registration"
                                             >
-                                                Send
+                                                Register
                                             </button>
 
                                         </div>
+
                                     </div>
                                 </div>
                             </form>
+
                         </div>
 
                     </div>

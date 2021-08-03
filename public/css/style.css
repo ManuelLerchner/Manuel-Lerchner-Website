@@ -101,33 +101,20 @@ body {
     background-color: #565656;
 }
 
-.material-icons.md-18 {
-    font-size: 18px;
-}
-.material-icons.md-24 {
-    font-size: 24px;
-}
 .material-icons.md-36 {
     font-size: 36px;
-}
-.material-icons.md-48 {
-    font-size: 48px;
 }
 
 .youtube a {
     color: #ff0000;
 }
 
-.twiter a {
+.twitter a {
     color: #1da1f2;
 }
 
 .brand-logo img {
     height: 56px;
-}
-
-.rainbow {
-    animation: rainbow 15s infinite;
 }
 
 .Logo {
@@ -156,8 +143,8 @@ body {
     }
 }
 
-.validate {
-    background-color: red;
+.rainbow {
+    animation: rainbow 15s infinite;
 }
 
 .btn-small {
@@ -190,19 +177,13 @@ body {
 }
 
 .controllerImageBig {
-    max-height: 420px;
+    max-height: 480px;
 }
 
 input {
     color: white;
 }
 
-.input-field span {
-    color: white;
-    font-size: 20;
-}
-
-/* icon prefix focus color */
 .input-field .prefix {
     color: white;
 }

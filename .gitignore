@@ -14,4 +14,4 @@ config.env
 desktop.ini 
 
 node_modules/
-accesslog.txt
+logs/

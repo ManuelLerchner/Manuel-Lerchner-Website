@@ -1,7 +1,4 @@
 const { exec } = require("child_process");
-const dotenv = require("dotenv");
-
-dotenv.config({ path: "./config/config.env" });
 
 //Secrets
 var username = process.env.UN_MIC_PC;
@@ -30,13 +27,21 @@ class PCRemote {
     }
 
     on() {
-        console.log("Turn PC ON");
-        this.execCommand(this.wakeupCommand);
+        if (process.env.NODE_ENV == "developement") {
+            console.log("Suppressed turning PC ON");
+        } else {
+            console.log("Turn PC ON");
+            this.execCommand(this.wakeupCommand);
+        }
     }
 
     off() {
-        console.log("Turn PC OFF");
-        this.execCommand(this.shutdownCommand);
+        if (process.env.NODE_ENV == "developement") {
+            console.log("Suppressed turning PC OFF");
+        } else {
+            console.log("Turn PC OFF");
+            this.execCommand(this.shutdownCommand);
+        }
     }
 }
 

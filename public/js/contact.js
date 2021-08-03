@@ -2,7 +2,7 @@
 ///////Input Forms///////
 ////////////////////////
 
-//Relay Form
+//Contact Form
 var Contact_Form = document.getElementById("form_contact");
 var Contact_Name = document.getElementById("name_contact");
 var Contact_Email = document.getElementById("email_contact");
@@ -36,6 +36,16 @@ Contact_Form.addEventListener("submit", function (e) {
         Contact_Email.value = "";
         Contact_Message.value = "";
 
+        document
+            .querySelector("label[for=" + Contact_Name.id + "]")
+            .classList.remove("active");
+        document
+            .querySelector("label[for=" + Contact_Email.id + "]")
+            .classList.remove("active");
+        document
+            .querySelector("label[for=" + Contact_Message.id + "]")
+            .classList.remove("active");
+
         Contact_Name.classList.remove("valid");
         Contact_Email.classList.remove("valid");
         Contact_Message.classList.remove("valid");
@@ -66,9 +76,9 @@ socket.on("pc_state-update", (pcOn) => {
 
 // Relay Event Response
 socket.on("form-event-response", (pcOn) => {
-    Form_ResponsePC.innerHTML = "Send";
+    Form_ResponsePC.innerHTML = "Send Email";
     Form_ResponsePC.classList.remove("hidden");
 
-    Form_ResponseMobile.innerHTML = "Send";
+    Form_ResponseMobile.innerHTML = "Send Email";
     Form_ResponseMobile.classList.remove("hidden");
 });

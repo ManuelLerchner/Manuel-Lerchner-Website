@@ -53,6 +53,14 @@ Relay_Form.addEventListener("submit", function (e) {
         Relay_Firstname.value = "";
         Relay_Password.value = "";
 
+        document
+            .querySelector("label[for=" + Relay_Firstname.id + "]")
+            .classList.remove("active");
+
+        document
+            .querySelector("label[for=" + Relay_Password.id + "]")
+            .classList.remove("active");
+
         Relay_Firstname.classList.remove("valid");
         Relay_Password.classList.remove("valid");
     }
@@ -70,6 +78,13 @@ PC_Form.addEventListener("submit", function (e) {
 
         PC_Firstname.value = "";
         PC_Password.value = "";
+
+        document
+            .querySelector("label[for=" + PC_Firstname.id + "]")
+            .classList.remove("active");
+        document
+            .querySelector("label[for=" + PC_Password.id + "]")
+            .classList.remove("active");
 
         PC_Firstname.classList.remove("valid");
         PC_Password.classList.remove("valid");
@@ -103,19 +118,19 @@ socket.on("pc_state-update", (pcOn) => {
 ////////////////////////
 
 // Relay Event Response
-socket.on("relay-event-response", (pcOn) => {
-    Relay_ResponsePC.innerHTML = "Closed";
+socket.on("relay-event-response", (message) => {
+    Relay_ResponsePC.innerHTML = message;
     Relay_ResponsePC.classList.remove("hidden");
 
-    Relay_ResponseMobile.innerHTML = "Closed";
+    Relay_ResponseMobile.innerHTML = message;
     Relay_ResponseMobile.classList.remove("hidden");
 });
 
 // PC Event Response
-socket.on("pc-event-response", (pcOn) => {
-    PC_ResponsePC.innerHTML = "Toggled";
+socket.on("pc-event-response", (message) => {
+    PC_ResponsePC.innerHTML = message;
     PC_ResponsePC.classList.remove("hidden");
 
-    PC_ResponseMobile.innerHTML = "Toggled";
+    PC_ResponseMobile.innerHTML = message;
     PC_ResponseMobile.classList.remove("hidden");
 });

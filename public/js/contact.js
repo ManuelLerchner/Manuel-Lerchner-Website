@@ -75,10 +75,10 @@ socket.on("pc_state-update", (pcOn) => {
 ////////////////////////
 
 // Relay Event Response
-socket.on("form-event-response", (pcOn) => {
-    Form_ResponsePC.innerHTML = "Send Email";
+socket.on("form-event-response", () => {
+    Form_ResponsePC.innerHTML = "Sent Email";
     Form_ResponsePC.classList.remove("hidden");
 
-    Form_ResponseMobile.innerHTML = "Send Email";
+    Form_ResponseMobile.innerHTML = "Sent Email";
     Form_ResponseMobile.classList.remove("hidden");
 });

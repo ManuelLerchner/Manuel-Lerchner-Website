@@ -39,6 +39,12 @@
 
 .card-title {
     font-size: 40px !important;
+
+    text-shadow: 4px 3px 2px black;
+}
+
+.card-image img {
+    filter: brightness(90%) contrast(120%) saturate(90%);
 }
 
 .top {
@@ -231,4 +237,30 @@ input:-webkit-autofill:active {
 
 .hidden {
     display: none;
+}
+
+.projectTitle {
+    font-size: calc(1.5vw + 1.5vh + 0.8vmin);
+}
+
+.projectText {
+    font-size: calc(0.6vw + 0.6vh + 0.5vmin);
+}
+
+table {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 1em;
+    background-color: rgb(255, 255, 255, 0.2);
+    border-bottom: 1px solid black;
+}
+
+th {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid black;
 }

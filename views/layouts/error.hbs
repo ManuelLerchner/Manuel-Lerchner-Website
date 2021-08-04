@@ -34,7 +34,6 @@
         <!-- Init Sidenav Animaion--->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                M.Sidenav.init(document.querySelectorAll('.sidenav'));
                 M.Parallax.init(document.querySelectorAll('.parallax'));
         });
         </script>
@@ -48,14 +47,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
-        <!-- Socket -->
-        <script defer src="/socket.io/socket.io.js"></script>
-
-        <!-- Trackink -->
-        <div style="height:0px">
-            <script defer src="http://www.geoplugin.net/javascript.gp"></script>;
-            <script defer src="/js/geolocation.js"></script>
-        </div>
     
     </head> 
         {{>_header}}

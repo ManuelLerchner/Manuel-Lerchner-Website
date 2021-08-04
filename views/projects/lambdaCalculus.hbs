@@ -1,0 +1,173 @@
+<!-- Preview Data
+title: "Lambda Calculus",
+description: "In this project I built a parser and interpreter for the λ-calculus in Python. In the end I was able to create some smaller programms in my self-developed programming language",
+image: "/images/lambdaCalculusThumbnail.jpg",
+link: "/projects/lambdaCalculus"
+-->
+
+<html lang="en">
+    <head>
+        <title>Lambda Calculus</title>
+    </head>
+
+    <body class="bg">
+
+        <!-- First Parallax  -->
+        <div id="index-banner" class="parallax-container border paralaxBig">
+            <div class="top">
+                <div class="container">
+
+                    <h1 class="header center white-text text-lighten-2 bold">
+                        Lambda Calculus</h1>
+
+                    <h5 class="subtext center white-text text-lighten-2">August
+                        04, 2021</h5>
+
+                </div>
+            </div>
+
+            <div class="parallax"><img
+                    class="blurr"
+                    src="/images/halfLive.jpg"
+                /></div>
+        </div>
+
+        <!-- What is Lambda Calc Card -->
+        <div class="row">
+            <div class="col l10 offset-l1 s12 m12">
+
+                <div class="card blue-grey darken-3">
+
+                    <div
+                        class="card-content grey-text text-lighten-4 projectText"
+                    >
+                        <h5 class="orange-text text-darken-2 projectTitle">What
+                            is λ-calculus?</h5>
+
+                        <p class="section">
+                            Lambda calculus is a formal system in mathematical
+                            logic for expressing computation based on function
+                            abstraction and application using variable binding
+                            and substitution.<br />
+                            Lambda calculus was introduced by the mathematician
+                            Alonzo Church in the 1930s as part of his research
+                            into the foundations of mathematics.</p>
+                        <p class="section">
+                            Lambda calculus consists of constructing lambda
+                            terms and performing reduction operations on them.
+                            <br />In the simplest form of lambda calculus, terms
+                            are built using only the following rules:
+                        </p>
+                        <div class="row">
+                            <div class="col l10 offset-l1 s12 m12">
+                                <table class="highlight centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Syntax</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>x</td>
+                                            <td>Variable</td>
+                                            <td>A character representing a
+                                                parameter or a value.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>(λx.M)</td>
+                                            <td>Abstraction</td>
+                                            <td>
+                                                Function definition.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>(A B)</td>
+                                            <td>Application</td>
+                                            <td>
+                                                Applying a function to an
+                                                argument.
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <p class="section">
+                            This allows us to produce expressions such as:
+                            (((λx.λy.x) (A B)) C) which aren't that usefull yet,
+                            but luckily there also exist some ways to reduce a
+                            given lambda expression:'.
+                        </p>
+
+                        <div class="row">
+                            <div class="col l10 offset-l1 s12 m12">
+                                <table class="highlight centered">
+                                    <thead>
+                                        <tr>
+                                            <th>Syntax</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>λx.M[x] →<br />λy.M[y]</td>
+                                            <td>α-conversion</td>
+                                            <td>Renaming the bound variables to
+                                                avoid collisions.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>((λx.M) E) →<br />(M[x:=E])</td>
+                                            <td>β-reduction</td>
+                                            <td>
+                                                Replacing the variables with the
+                                                argument in the body of the
+                                                abstraction.</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <p class="section">
+                            This allows us reduce the previous expression to
+                            just: (A B).
+                            <br />In the next sections we are going further
+                            explore the possibilies of this kind of programming
+                            language.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--How do you build your own λ-Interpreter Card -->
+        <div class="row">
+            <div class="col l10 offset-l1 s12 m12">
+
+                <div class="card blue-grey darken-3">
+
+                    <div
+                        class="card-content grey-text text-lighten-4 projectText"
+                    >
+                        <h5 class="orange-text text-darken-2 projectTitle">Build
+                            your own λ-Interpreter
+                        </h5>
+
+                        <p class="section">
+                            https://youtu.be/3VQ382QG-y4</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

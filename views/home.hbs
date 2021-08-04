@@ -48,13 +48,13 @@
 
             <div class="parallax"><img
                     class="blurr"
-                    src="./images/Developer.jpg"
+                    src="/images/Developer.jpg"
                 /></div>
 
         </div>
 
         <!-- Second Parallax  -->
-        <div id="index-banner" class="parallax-container border marginTop ">
+        <div id="index-banner" class="parallax-container border marginTop">
             <div class="top">
                 <div class="container">
 
@@ -69,79 +69,31 @@
 
             <div class="parallax"><img
                     class="blurr"
-                    src="./images/Cyber.jpg"
+                    src="/images/Cyber.jpg"
                 /></div>
         </div>
 
         <!-- Project Cards  -->
         <div class="row">
-            <div class="col s12 m6 l4">
-                <div class="card card2 medium">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/403" />
-                        <span class="card-title">Free Time Learning</span>
-                    </div>
-                    <div class="card-content">
-                        <p>Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text...</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#" class="btn blue">Free Time Learn</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/402" />
-                        <span class="card-title">Free Time Learning</span>
-                    </div>
-                    <div class="card-content">
-                        <p>Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text...</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#" class="btn blue">Free Time Learn</a>
+            {{#each projects}}
+                <div class="col s12 m6 l4">
+                    <div class="card card2 medium">
+                        <div class="card-image">
+                            <img src={{this.image}} />
+                            <span class="card-title">{{this.title}}</span>
+                        </div>
+                        <div class="card-content">
+                            <p>{{this.description}}.</p>
+                        </div>
+                        <div class="card-action">
+                            <a
+                                href={{this.link}}
+                                class="btn blue"
+                            >Explore</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col s12 m6 l4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/400" />
-                        <span class="card-title">Free Time Learning</span>
-                    </div>
-                    <div class="card-content">
-                        <p>Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text...</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#" class="btn blue">Free Time Learn</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col s12 m6 l4">
-                <div class="card medium">
-                    <div class="card-image">
-                        <img src="https://picsum.photos/401" />
-                        <span class="card-title">Free Time Learning</span>
-                    </div>
-                    <div class="card-content">
-                        <p>Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text...</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#" class="btn blue">Free Time Learn</a>
-                    </div>
-                </div>
-            </div>
+            {{/each}}
         </div>
 
     </body>

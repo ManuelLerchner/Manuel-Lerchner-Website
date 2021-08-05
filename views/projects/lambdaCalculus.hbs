@@ -8,6 +8,17 @@ link: "/projects/lambdaCalculus"
 <html lang="en">
     <head>
         <title>Lambda Calculus</title>
+
+        <link
+            rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/monokai-sublime.min.css"
+        />
+        <script
+            src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"
+        ></script>
+
+        <link rel="stylesheet" href="/css/project.css" />
+
     </head>
 
     <body class="bg">
@@ -37,112 +48,124 @@ link: "/projects/lambdaCalculus"
             <div class="col l10 offset-l1 s12 m12">
 
                 <div class="card blue-grey darken-3">
+                    <div class="row">
+                        <div class="col l10 offset-l1 s12 m12">
 
-                    <div
-                        class="card-content grey-text text-lighten-4 projectText"
-                    >
-                        <h5 class="orange-text text-darken-2 projectTitle">What
-                            is λ-calculus?</h5>
+                            <div
+                                class="card-content grey-text text-lighten-4 projectText"
+                            >
+                                <h5
+                                    class="orange-text text-darken-2 projectTitle"
+                                >What is λ-calculus?</h5>
 
-                        <p class="section">
-                            Lambda calculus is a formal system in mathematical
-                            logic for expressing computation based on function
-                            abstraction and application using variable binding
-                            and substitution.<br />
-                            Lambda calculus was introduced by the mathematician
-                            Alonzo Church in the 1930s as part of his research
-                            into the foundations of mathematics.</p>
-                        <p class="section">
-                            Lambda calculus consists of constructing lambda
-                            terms and performing reduction operations on them.
-                            <br />In the simplest form of lambda calculus, terms
-                            are built using only the following rules:
-                        </p>
-                        <div class="row">
-                            <div class="col l10 offset-l1 s12 m12">
-                                <table class="highlight centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Syntax</th>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
+                                <p class="section">
+                                    Lambda calculus is a formal system in
+                                    mathematical logic for expressing
+                                    computation based on function abstraction
+                                    and application using variable binding and
+                                    substitution.<br />
+                                    Lambda calculus was introduced by the
+                                    mathematician Alonzo Church in the 1930s as
+                                    part of his research into the foundations of
+                                    mathematics.</p>
+                                <p class="section">
+                                    Lambda calculus consists of constructing
+                                    lambda terms and performing reduction
+                                    operations on them.
+                                    <br />In the simplest form of lambda
+                                    calculus, terms are built using only the
+                                    following rules:
+                                </p>
+                                <div class="row">
+                                    <div class="col l10 offset-l1 s12 m12">
+                                        <table class="highlight">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="1">Syntax</th>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
 
-                                    <tbody>
-                                        <tr>
-                                            <td>x</td>
-                                            <td>Variable</td>
-                                            <td>A character representing a
-                                                parameter or a value.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>(λx.M)</td>
-                                            <td>Abstraction</td>
-                                            <td>
-                                                Function definition.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>(A B)</td>
-                                            <td>Application</td>
-                                            <td>
-                                                Applying a function to an
-                                                argument.
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            <tbody>
+                                                <tr>
+                                                    <td>x</td>
+                                                    <td>Variable</td>
+                                                    <td>A character representing
+                                                        a parameter or a value.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>(λx.M)</td>
+                                                    <td>Abstraction</td>
+                                                    <td>
+                                                        Function definition.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>(A B)</td>
+                                                    <td>Application</td>
+                                                    <td>
+                                                        Applying a function to
+                                                        an argument.
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <p class="section">
+                                    This allows us to produce expressions such
+                                    as: (((λx.λy.x) (A B)) C) which aren't that
+                                    usefull yet, but luckily there also exist
+                                    some ways to reduce a given lambda
+                                    expression:'.
+                                </p>
+
+                                <div class="row">
+                                    <div class="col l10 offset-l1 s12 m12">
+                                        <table class="highlight">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="1">Syntax</th>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>λx.M[x] →<br
+                                                        />λy.M[y]</td>
+                                                    <td>α-conversion</td>
+                                                    <td>Renaming the bound
+                                                        variables to avoid
+                                                        collisions.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>(λx.M E) →<br
+                                                        />M[x:=E]</td>
+                                                    <td>β-reduction</td>
+                                                    <td>
+                                                        Replacing the variables
+                                                        with the argument in the
+                                                        body of the abstraction.</td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <p class="section">
+                                    This allows us reduce the previous
+                                    expression to just: (A B).
+                                    <br />In the next sections we are going
+                                    further explore the possibilies of this kind
+                                    of programming language.
+                                </p>
+
                             </div>
                         </div>
-                        <p class="section">
-                            This allows us to produce expressions such as:
-                            (((λx.λy.x) (A B)) C) which aren't that usefull yet,
-                            but luckily there also exist some ways to reduce a
-                            given lambda expression:'.
-                        </p>
-
-                        <div class="row">
-                            <div class="col l10 offset-l1 s12 m12">
-                                <table class="highlight centered">
-                                    <thead>
-                                        <tr>
-                                            <th>Syntax</th>
-                                            <th>Name</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        <tr>
-                                            <td>λx.M[x] →<br />λy.M[y]</td>
-                                            <td>α-conversion</td>
-                                            <td>Renaming the bound variables to
-                                                avoid collisions.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>((λx.M) E) →<br />(M[x:=E])</td>
-                                            <td>β-reduction</td>
-                                            <td>
-                                                Replacing the variables with the
-                                                argument in the body of the
-                                                abstraction.</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <p class="section">
-                            This allows us reduce the previous expression to
-                            just: (A B).
-                            <br />In the next sections we are going further
-                            explore the possibilies of this kind of programming
-                            language.
-                        </p>
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -152,22 +175,104 @@ link: "/projects/lambdaCalculus"
             <div class="col l10 offset-l1 s12 m12">
 
                 <div class="card blue-grey darken-3">
+                    <div class="row">
+                        <div class="col l10 offset-l1 s12 m12">
 
-                    <div
-                        class="card-content grey-text text-lighten-4 projectText"
-                    >
-                        <h5 class="orange-text text-darken-2 projectTitle">Build
-                            your own λ-Interpreter
-                        </h5>
+                            <div
+                                class="card-content grey-text text-lighten-4 projectText"
+                            >
+                                <h5
+                                    class="orange-text text-darken-2 projectTitle"
+                                >Build your own λ-Interpreter
+                                </h5>
 
-                        <p class="section">
-                            https://youtu.be/3VQ382QG-y4</p>
+                                <p class="section">
+                                    An Interpreter is a complex program, so it
+                                    will be easier if we split the task of
+                                    parsing and interpreting the given
+                                    expression into multiple smaller stages:
+                                </p>
 
+                                <!-- Table -->
+                                <div class="row">
+
+                                    <div class="col l10 offset-l1 s12 m12">
+
+                                        <table class="highlight">
+                                            <thead>
+                                                <tr>
+                                                    <th
+                                                        scope="col"
+                                                        colspan="1"
+                                                    ></th>
+                                                    <th scope="col">Name</th>
+                                                    <th
+                                                        scope="col"
+                                                    >Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="number">1.</td>
+                                                    <td>Lexer</td>
+                                                    <td>Turns a sequence of
+                                                        characters (plain text)
+                                                        into a sequence of
+                                                        tokens.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="number">2.</td>
+                                                    <td>Parser</td>
+                                                    <td>Takes a sequence of
+                                                        tokens and produces an
+                                                        abstract syntax tree
+                                                        (AST)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="number">3.</td>
+                                                    <td>Interpreter</td>
+                                                    <td>
+                                                        Interprets the AST of
+                                                        the source of a program
+                                                        on the fly (without
+                                                        compiling it first).</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+
+                                <p class="section">
+                                    Eventually we want to create a function
+                                    which takes an input string and performs the
+                                    lexical analysis, the parsing, and the
+                                    interpreting and returns the reduced AST in
+                                    the end. It could look something like this:
+                                </p>
+
+                                <!-- Code -->
+                                <div class="row">
+                                    <div class="col l10 offset-l1 s12 m12">
+                                        <pre>
+                                            <code
+                                                id="code-python1"
+                                                class="code python"
+                                            >
+                                            </code>
+
+                                        </pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
 
+        <script src="/js/lambdaCalculus.js"></script>
+        <script>hljs.highlightAll();</script>
     </body>
 </html>

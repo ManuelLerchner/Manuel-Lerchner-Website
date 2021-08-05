@@ -264,3 +264,21 @@ th {
     background-color: rgba(0, 0, 0, 0.4);
     border-bottom: 1px solid black;
 }
+
+ol {
+    border-collapse: collapse;
+    border-radius: 1em !important;
+    overflow: hidden !important;
+}
+
+.number {
+    font-weight: bold;
+}
+
+.hljs {
+    border-radius: 1em;
+}
+
+pre {
+    margin: 0 !important;
+}

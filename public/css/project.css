@@ -1,0 +1,22 @@
+/* Scroll */
+body::-webkit-scrollbar {
+    display: flex !important;
+}
+
+body {
+    -ms-overflow-style: auto;
+    scrollbar-width: auto !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+/* Track */
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(17, 15, 15);
+    border-radius: 10px;
+}

@@ -282,3 +282,22 @@ ol {
 pre {
     margin: 0 !important;
 }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.inlineImg {
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-radius: 0.5em !important;
+    overflow: hidden !important;
+    background-color: rgb(255, 255, 255, 0.8);
+}
+
+pre {
+    font-size: calc(0.4vw + 0.9vh + 0.6vmin) !important;
+}

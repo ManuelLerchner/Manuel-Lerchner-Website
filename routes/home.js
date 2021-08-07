@@ -3,7 +3,7 @@ const router = express.Router();
 const fs = require("fs");
 
 function loadProjects() {
-    out = { projects: {} };
+    const out = { projects: {} };
 
     var files = fs.readdirSync("./views/projects");
 
@@ -23,17 +23,18 @@ function loadProjects() {
                 link: link
             };
 
-            out.projects[file] = projectData;
+            out.projects[file.split(".")[0]] = projectData;
         });
     });
 
     return out;
 }
 
+const prj = loadProjects();
+
 //  Get /
 router.get("/", function (req, res) {
-    projectData = loadProjects();
-    res.render("home", projectData);
+    res.render("home", prj);
 });
 
 module.exports = router;

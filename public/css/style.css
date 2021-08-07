@@ -243,6 +243,10 @@ input:-webkit-autofill:active {
     font-size: calc(1.5vw + 1.5vh + 0.8vmin);
 }
 
+.projectSubTitle {
+    font-size: calc(1.2vw + 1.2vh + 0.7vmin);
+}
+
 .projectText {
     font-size: calc(0.6vw + 0.6vh + 0.5vmin);
 }
@@ -287,10 +291,11 @@ pre {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 65%;
 }
 
-.inlineImg {
+.inlineImg,
+.inlineImgBig {
     margin-top: 20px;
     border-collapse: collapse;
     border-radius: 0.5em !important;
@@ -298,6 +303,18 @@ pre {
     background-color: rgb(255, 255, 255, 0.8);
 }
 
+.inlineImgBig {
+    width: 90%;
+}
+
 pre {
     font-size: calc(0.4vw + 0.9vh + 0.6vmin) !important;
+}
+
+.contents {
+    line-height: 2 !important;
+}
+
+html {
+    scroll-behavior: smooth;
 }

@@ -282,15 +282,11 @@ class Interpreter:
         return Node
 `;
 
-
 var finalExpl = `
 >>> myString = "((λx.λy.x A) B)"
 
 >>> L = Lexer()
 >>> L.analyze(myString)
->>> [LPAR, LPAR, LAMBDA, VAR:x, DOT,
-     LAMBDA, VAR:y, DOT, VAR:x, SPACE,
-     VAR:A, RPAR, SPACE, VAR:B, RPAR]
 
 >>> P = Parser(L)
 >>> AST = P.parse()
@@ -300,6 +296,62 @@ var finalExpl = `
 >>> VAR:A   #Results in the variable "A"
 `;
 
+var booleanCode = `
+UserInput:
+'((AND TRUE) TRUE)'                     #Call AND function
+
+Trying to evaluate hidden Input:
+'((λp.λq.((p q) p) λa.λb.a) λa.λb.a)'   #Input gets expandet to its full form
+
+Trying to interpret AST:
+'((λp.λq.((p q) p) λa.λb.a) λa.λb.a)'   #Parsing gave this result
+
+Got following result:
+'λa.λb.a'                               #Reducing the AST gave this result
+
+Input:
+'((AND TRUE) TRUE)'
+evaluated to:                           #A lookup found that 
+'TRUE'                                  #output corrisponds with TRUE 
+`;
+
+var arithmeticCode = `
+UserInput:                          #Call MULT Function
+'((MULT TWO) FOUR)'                          
+
+Trying to evaluate hidden Input:    #Expand
+'((λm.λn.λf.(m (n f)) λf.λx.(f (f x))) λf.λx.(f (f (f (f x)))))'    
+
+Trying to interpret AST:            #Parse
+'((λm.λn.λf.(m (n f)) λf.λx.(f (f x))) λf.λx.(f (f (f (f x)))))'       
+
+Got following result:               #Reduce
+'λf.λx.(f (f (f (f (f (f (f (f x))))))))'
+
+Input:
+'((MULT TWO) FOUR)'
+evaluated to:                       #Lookup
+'EIGHT'
+`;
+
+var factCode = `
+UserInput:                          #Call MULT Function
+'(FACT FOUR)'
+
+Trying to evaluate hidden Input:    #Expand
+'((λf.(λx.(f (x x)) λx.(f (x x))) λg.λn.(((λb.λx.λy.((b x) y) (λn.((n λx.λa.λb.b) λa.λb.a) n)) λf.λx.(f x)) ((λm.λn.λf.(m (n f)) n) (g (λn.λf.λx.(((n λg.λh.(h (g f))) λu.x) λu.u) n))))) λf.λx.(f (f (f (f x)))))'
+
+Trying to interpret AST:            #Parse
+'((λf.(λx.(f (x x)) λx.(f (x x))) λg.λn.(((λb.λx.λy.((b x) y) (λn.((n λx.λa.λb.b) λa.λb.a) n)) λf.λx.(f x)) ((λm.λn.λf.(m (n f)) n) (g (λn.λf.λx.(((n λg.λh.(h (g f))) λu.x) λu.u) n))))) λf.λx.(f (f (f (f x)))))'
+
+Got following result:               #Reduce
+'λf.λx.(f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f (f x))))))))))))))))))))))))'
+
+Input:
+'(FACT FOUR)'
+evaluated to:                       #Lookup
+'TWENTY-FOUR'
+`;
 function codeToString(str) {
     return str.substring(1);
 }
@@ -326,3 +378,8 @@ document.getElementById("code-python8").innerHTML = codeToString(nodeCode);
 document.getElementById("code-python9").innerHTML = codeToString(parserExpl);
 document.getElementById("code-python10").innerHTML = codeToString(interprCode);
 document.getElementById("code-python11").innerHTML = codeToString(finalExpl);
+
+document.getElementById("code-python12").innerHTML = codeToString(booleanCode);
+document.getElementById("code-python13").innerHTML =
+    codeToString(arithmeticCode);
+document.getElementById("code-python14").innerHTML = codeToString(factCode);

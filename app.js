@@ -11,7 +11,7 @@ const fs = require("fs");
 dotenv.config({ path: "./config/config.env" });
 
 //Log to File
-if (process.env.NODE_ENV == "developement") {
+if (process.env.NODE_ENV == "production") {
     require("./ServerFunctions/Logger.js");
 }
 

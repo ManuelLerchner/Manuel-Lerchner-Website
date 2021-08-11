@@ -44,6 +44,7 @@ try {
         }
     };
 } catch (err) {
+    console.log(err);
     module.exports = class RelayGPIO_PC {
         activateRelay(time) {
             this.on();

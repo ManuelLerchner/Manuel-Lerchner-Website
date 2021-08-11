@@ -9,6 +9,9 @@ const fs = require("fs");
 
 const HandleIO = require("./ServerFunctions/HandleIO.js");
 
+//Log to File
+require("./ServerFunctions/Logger.js");
+
 //Config
 dotenv.config({ path: "./config/config.env" });
 

@@ -7,13 +7,15 @@ const http = require("http");
 const https = require("https");
 const fs = require("fs");
 
-//Log to File
-require("./ServerFunctions/Logger.js");
-
-const HandleIO = require("./ServerFunctions/HandleIO.js");
-
 //Config
 dotenv.config({ path: "./config/config.env" });
+
+//Log to File
+if (process.env.NODE_ENV == "developement") {
+    require("./ServerFunctions/Logger.js");
+}
+
+const HandleIO = require("./ServerFunctions/HandleIO.js");
 
 //Connect DB
 require("./database/db");

@@ -5,7 +5,9 @@ const fs = require("fs");
 function loadProjects() {
     const out = { projects: {} };
 
-    var files = fs.readdirSync("./views/projects");
+    var files = fs.readdirSync("./views/projects").sort();
+
+    console.log(files)
 
     files.forEach((file) => {
         fs.readFile("./views/projects/" + file, "utf8", (err, data) => {

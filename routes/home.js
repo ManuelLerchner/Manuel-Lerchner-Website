@@ -7,8 +7,6 @@ function loadProjects() {
 
     var files = fs.readdirSync("./views/projects").sort();
 
-    console.log(files)
-
     files.forEach((file) => {
         fs.readFile("./views/projects/" + file, "utf8", (err, data) => {
             var lines = data.split("\n");

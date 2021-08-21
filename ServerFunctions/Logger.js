@@ -2,7 +2,7 @@ var winston = require("winston");
 
 winston.add(
     new winston.transports.File({
-        filename: "./logs/logfile.log",
+        filename: "./logs/logfile.txt",
         format: winston.format.combine(
             winston.format.timestamp({
                 format: "YYYY-MM-DD hh:mm:ss"

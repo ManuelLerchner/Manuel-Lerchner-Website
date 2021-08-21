@@ -16,5 +16,5 @@ desktop.ini
 node_modules/
 
 *.pem
-logs/logfile.log
+logs/logfile.txt
 logs/accesslog.txt

@@ -64,7 +64,8 @@
 }
 
 .card-content {
-    font-size: 25 !important;
+    font-size: 16 !important;
+    padding: 10px !important;
 }
 
 .bold {

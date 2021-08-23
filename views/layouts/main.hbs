@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -17,6 +16,17 @@
         <meta name="robots" content="index, follow" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="English" />
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-JZ8R2FF9B4"
+        ></script>
+        <script>
+            window.dataLayer = window.dataLayer || []; function
+            gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+            gtag('config', 'G-JZ8R2FF9B4');
+        </script>
 
         <!-- Materialize --->
         <link
@@ -57,11 +67,14 @@
 
         <!-- Trackink -->
         <div style="height:0px">
-            <script defer src="http://www.geoplugin.net/javascript.gp"></script>;
+            <script
+                defer
+                src="http://www.geoplugin.net/javascript.gp"
+            ></script>;
             <script defer src="/js/geolocation.js"></script>
         </div>
-    
-    </head> 
+
+    </head>
         {{>_header}}
         {{{body}}}
         {{>_footer}}

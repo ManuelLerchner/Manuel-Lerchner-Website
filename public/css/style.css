@@ -40,7 +40,9 @@
 .card-title {
     font-size: 40px !important;
 
-    text-shadow: 4px 3px 2px black;
+    font-weight: 500 !important;
+
+    text-shadow: 4px 3px 2px black, -2px 2px 2px black, 2px -2px 2px black;
 }
 
 .card-image img {

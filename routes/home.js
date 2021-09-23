@@ -7,7 +7,7 @@ function loadProjects() {
 
     var files = fs.readdirSync("./views/projects").sort();
 
-    files.forEach((file) => {
+    files.forEach((file, i) => {
         fs.readFile("./views/projects/" + file, "utf8", (err, data) => {
             var lines = data.split("\n");
 
@@ -15,15 +15,17 @@ function loadProjects() {
             var descr = lines[2].match(/"([^"]+)"/)[1];
             var image = lines[3].match(/"([^"]+)"/)[1];
             var link = lines[4].match(/"([^"]+)"/)[1];
+            var idx = lines[5].match(/"([^"]+)"/)[1];
 
             projectData = {
                 title: title,
                 description: descr,
                 image: image,
-                link: link
+                link: link,
+                idx: idx,
             };
 
-            out.projects[file.split(".")[0]] = projectData;
+            out.projects[files.length - idx] = projectData;
         });
     });
 

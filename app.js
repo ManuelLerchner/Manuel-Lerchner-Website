@@ -35,7 +35,7 @@ app.engine(
     "hbs",
     exphbs({
         defaultLayout: "main",
-        extname: "hbs"
+        extname: "hbs",
     })
 );
 
@@ -48,11 +48,10 @@ app.use("/register", require("./routes/register"));
 app.use("/projects", require("./routes/projects"));
 app.use("/api", require("./routes/api"));
 
-
 //Default
-// app.get("/*", function (req, res) {
-//     res.render("error/pageNotFound", { layout: "error" });
-// });
+app.get("/*", function (req, res) {
+    res.render("error/pageNotFound", { layout: "error" });
+});
 
 //Load HTTPS Certificates
 const httpsOptions = {

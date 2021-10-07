@@ -22,7 +22,13 @@ router.post("/relay", async (req, res) => {
 
     if (success) {
         Relay.activateRelay(process.env.RELAY_ON_TIME);
-        res.sendStatus(200); //ok
+        ///
+        res.status(402); //payment required
+        res.send(
+            "<br><br>Fin moment geats no, obbo wennas zukünftig weita aso ins Haus kemm welt, weartas la a Geld zohl missn.<br><br>LG Manuel"
+        );
+        ///
+        //res.sendStatus(200); //ok
         Email.sendMail(
             "RaspberryPi Door-Service",
             `${username} just opened Door!`

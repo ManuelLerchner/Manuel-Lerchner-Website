@@ -130,25 +130,28 @@ body {
     color: aliceblue;
 }
 
-.brand-logo img {
-    height: 56px;
-}
-
 .Logo {
     position: relative;
-    top: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Consolas, monaco, monospace;
-    width: 56px;
+    width: 60px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
 }
 
 .LogoText {
-    margin-left: 60px;
+    margin-left: 72px;
 
     font-family: Consolas, monaco, monospace;
     font-size: 20px;
+}
+
+.logoImage {
+    height: 82px !important;
 }
 
 @keyframes rainbow {

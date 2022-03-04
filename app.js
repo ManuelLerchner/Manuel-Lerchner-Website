@@ -6,6 +6,7 @@ const socket = require("socket.io");
 const http = require("http");
 const https = require("https");
 const fs = require("fs");
+const subdomain = require("express-subdomain");
 
 //Config
 dotenv.config({ path: "./config/config.env" });
@@ -47,6 +48,9 @@ app.use("/about", require("./routes/about"));
 app.use("/register", require("./routes/register"));
 app.use("/projects", require("./routes/projects"));
 app.use("/api", require("./routes/api"));
+app.use(subdomain("pathfinder", require("./routes/pathfinder")));
+app.use(subdomain("monopoly", require("./routes/monopoly")));
+app.use(subdomain("lambdaCalculus", require("./routes/lambdaCalculus")));
 
 //Default
 app.get("/*", function (req, res) {
@@ -56,7 +60,7 @@ app.get("/*", function (req, res) {
 //Load HTTPS Certificates
 const httpsOptions = {
     key: fs.readFileSync("./config/key.pem"),
-    cert: fs.readFileSync("./config/cert.pem")
+    cert: fs.readFileSync("./config/cert.pem"),
 };
 
 //Create Servers

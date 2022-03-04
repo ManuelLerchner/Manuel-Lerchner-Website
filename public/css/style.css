@@ -135,23 +135,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
+    height: 64px;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
+    height: 100%;
 }
 
 .LogoText {
-    margin-left: 72px;
+    margin-left: 86px;
 
     font-family: Consolas, monaco, monospace;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .logoImage {
-    height: 82px !important;
+    height: 100%;
 }
 
 @keyframes rainbow {

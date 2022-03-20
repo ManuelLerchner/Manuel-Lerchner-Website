@@ -42,11 +42,25 @@
 
     font-weight: 500 !important;
 
-    text-shadow: 4px 3px 2px black, -2px 2px 2px black, 2px -2px 2px black;
+    text-shadow: 4px 3px 3px black, -2px 2px 3px black,
+        4px 4px 3px rgb(88, 88, 88), 4px -2px 3px rgb(61, 61, 61);
 }
 
 .card-image img {
     filter: brightness(90%) contrast(120%) saturate(90%);
+}
+
+.card-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.date {
+    margin: 0px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .top {

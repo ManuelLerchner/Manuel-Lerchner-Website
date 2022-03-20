@@ -57,41 +57,24 @@ app.get("/*", function (req, res) {
     res.render("error/pageNotFound", { layout: "error" });
 });
 
-//Load HTTPS Certificates
-const httpsOptions = {
-    key: fs.readFileSync("./config/key.pem"),
-    cert: fs.readFileSync("./config/cert.pem"),
-};
-
 //Create Servers
 const serverHTTP = http.createServer(app);
-const serverHTTPS = https.createServer(httpsOptions, app);
 const ioHTTP = socket(serverHTTP);
-const ioHTTPS = socket(serverHTTPS);
 
 //Start IO
 const IOHTTP = new HandleIO(ioHTTP);
-const IOHTTPS = new HandleIO(ioHTTPS);
 IOHTTP.handleEvents();
-IOHTTPS.handleEvents();
 
 //Ports
-var [HTTP_PORT, HTTPS_PORT] =
+var HTTP_PORT =
     process.env.NODE_ENV == "developement"
-        ? [process.env.HTTP_DEV_PORT, process.env.HTTPS_DEV_PORT]
-        : [process.env.HTTP_PORT, process.env.HTTPS_PORT];
+        ? process.env.HTTP_DEV_PORT
+        : process.env.HTTP_PORT;
 
 //Run Servers
 serverHTTP.listen(
     HTTP_PORT,
     console.log(
         `HTTP_Server running in ${process.env.NODE_ENV} mode on http://localhost:${HTTP_PORT}`
-    )
-);
-
-serverHTTPS.listen(
-    HTTPS_PORT,
-    console.log(
-        `HTTPS_Server running in ${process.env.NODE_ENV} mode on https://localhost:${HTTPS_PORT}`
     )
 );

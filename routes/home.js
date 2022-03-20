@@ -16,6 +16,7 @@ function loadProjects() {
             var image = lines[3].match(/"([^"]+)"/)[1];
             var link = lines[4].match(/"([^"]+)"/)[1];
             var idx = lines[5].match(/"([^"]+)"/)[1];
+            var date = lines[6].match(/"([^"]+)"/)[1];
 
             projectData = {
                 title: title,
@@ -23,9 +24,10 @@ function loadProjects() {
                 image: image,
                 link: link,
                 idx: idx,
+                date: date,
             };
 
-            out.projects[files.length - idx] = projectData;
+            out.projects[idx] = projectData;
         });
     });
 

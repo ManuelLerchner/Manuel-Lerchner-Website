@@ -15,8 +15,12 @@ class EMail {
         });
     }
 
-    sendMail(subject, text) {
+    sendMail(subject, text, sendToEveryone = false) {
         let receivers = process.env.EMAIL_RECEIVERS.split(";");
+
+        if (!sendToEveryone) {
+            receivers = [receivers[0]];
+        }
 
         receivers.forEach((receiver) => {
             if (process.env.NODE_ENV == "developement") {

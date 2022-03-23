@@ -47,7 +47,8 @@ class HandleIO {
                         this.activateRelay(process.env.RELAY_ON_TIME);
                         Email.sendMail(
                             "RaspberryPi Door-Service",
-                            `${data.username} just opened Door!`
+                            `${data.username} just opened Door!`,
+                            true
                         );
                     }
                 });

@@ -31,7 +31,8 @@ router.post("/relay", async (req, res) => {
         //res.sendStatus(200); //ok
         Email.sendMail(
             "RaspberryPi Door-Service",
-            `${username} just opened the Door!`
+            `${username} just opened the Door!`,
+            true
         );
     } else if (response != null) {
         res.sendStatus(401); //auth error

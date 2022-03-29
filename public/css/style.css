@@ -212,7 +212,9 @@ body {
 }
 
 .controllerImageBig {
-    max-height: 480px;
+    padding: 1px;
+    max-height: 100%;
+    object-fit: cover;
 }
 
 input {
@@ -338,4 +340,8 @@ pre {
 
 html {
     scroll-behavior: smooth;
+}
+
+.fullheightImage {
+    height: 100% !important;
 }

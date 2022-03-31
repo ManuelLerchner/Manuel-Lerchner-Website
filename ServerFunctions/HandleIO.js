@@ -148,8 +148,7 @@ class HandleIO {
 
         // get x-forwarded-for header (which will be set if using nginx as reverse proxy) from socket
         let headers = socket.request.headers;
-
-        console.log(ip);
+console.log(headers);
 
         clientIp = headers["x-forwarded-for"];
 

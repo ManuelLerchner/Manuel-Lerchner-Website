@@ -360,3 +360,9 @@ html {
     border-bottom-left-radius: 10px !important;
     border-bottom-right-radius: 10px !important;
 }
+
+.card-content{
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    padding-bottom: 20px !important;
+}

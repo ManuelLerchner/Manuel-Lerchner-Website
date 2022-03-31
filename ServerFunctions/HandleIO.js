@@ -145,12 +145,15 @@ class HandleIO {
 
     async handleSessions(socket) {
         var clientIp = socket.request.connection._peername.address;
+
         // get x-forwarded-for header (which will be set if using nginx as reverse proxy) from socket
-        var ip = socket.request.headers["x-forwarded-for"] || clientIp;
+        let headers = socket.request.headers;
 
         console.log(ip);
 
-        return await Session.checkIfTooManyRequests(clientIp, socket);
+        clientIp = headers["x-forwarded-for"];
+
+        return await Session.checkIfTooManyRequests(clientIp, headers);
     }
 
     activateRelay(time) {

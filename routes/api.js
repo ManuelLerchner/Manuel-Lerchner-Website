@@ -4,13 +4,22 @@ const router = express.Router();
 const Authentification = require("../ServerFunctions/HandleAuthentification.js");
 const RelayGPIO = require("../ServerFunctions/HandleGPIO.js");
 const EMailService = require("../ServerFunctions/HandleEMail.js");
+const HandleSession = require("../ServerFunctions/HandleSession.js");
 
 const Auth = new Authentification();
 const Relay = new RelayGPIO();
 const Email = new EMailService();
+const Sessions = new HandleSession();
 
-//  Post /API/relay
+//  Post /api/relay
 router.post("/relay", async (req, res) => {
+    let [succ, msg] = await Sessions.checkIfTooManyRequests(req.ip);
+
+    if (!succ) {
+        res.status(400).send(msg);
+        return;
+    }
+
     try {
         username = req.body.username;
         password = req.body.password;
@@ -18,17 +27,22 @@ router.post("/relay", async (req, res) => {
         res.sendStatus(400); //Bad parameters;
     }
 
+    if (!username || !password) {
+        res.sendStatus(400); //Bad parameters;
+        return;
+    }
+
     var [success, response] = await Auth.login({ username, password });
 
     if (success) {
         Relay.activateRelay(process.env.RELAY_ON_TIME);
         ///
-        res.status(402); //payment required
-        res.send(
-            "<br><br>Fin moment geats no, obbo wennas zukünftig weita aso ins Haus kemm welt, weartas la a Geld zohl missn.<br><br>LG Manuel"
-        );
+        ///res.status(402); //payment required
+        // res.send(
+        //     "<br><br>Fin moment geats no, obbo wennas zukünftig weita aso ins Haus kemm welt, weartas la a Geld zohl missn.<br><br>LG Manuel"
+        // );
         ///
-        //res.sendStatus(200); //ok
+        res.sendStatus(200); //ok
         Email.sendMail(
             "RaspberryPi Door-Service",
             `${username} just opened the Door!`,
@@ -39,6 +53,10 @@ router.post("/relay", async (req, res) => {
     } else {
         res.sendStatus(500); //server Error
     }
+});
+
+router.get("/relay", (req, res) => {
+    res.sendStatus(200);
 });
 
 module.exports = router;

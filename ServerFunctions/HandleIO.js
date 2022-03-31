@@ -6,6 +6,7 @@ const GPIO = require("./HandleGPIO.js");
 const PCRemote = require("./HandlePCRemote.js");
 const Authentification = require("./HandleAuthentification.js");
 const EmailService = require("./HandleEMail.js");
+const SessionService = require("./HandleSession.js");
 
 //Config
 dotenv.config({ path: "./config/config.env" });
@@ -14,6 +15,13 @@ const Relay = new GPIO();
 const PC = new PCRemote();
 const Auth = new Authentification();
 const Email = new EmailService();
+const Session = new SessionService();
+
+Session.deleteOldRequest();
+
+setInterval(() => {
+    Session.deleteOldRequest();
+}, 1000 * 60 * 60);
 
 //Initial States
 var relayState = false;
@@ -35,7 +43,17 @@ class HandleIO {
             );
 
             //Relay Authentification
-            socket.on("relay authentification", (data) => {
+            socket.on("relay authentification", async (data) => {
+                let [sucess, msg] = await this.handleSessions(socket);
+
+                if (!sucess) {
+                    socket.emit(
+                        "relay-event-response",
+                        `<span style='color: "red";'>${msg}</span>`
+                    );
+                    return;
+                }
+
                 Auth.login(data).then(([success, response]) => {
                     var htmlResponse = `<span style='color: ${
                         success ? "green" : "red"
@@ -55,7 +73,16 @@ class HandleIO {
             });
 
             //PC Authentification
-            socket.on("pc authentification", (data) => {
+            socket.on("pc authentification", async (data) => {
+                let [sucess, msg] = await this.handleSessions(socket);
+
+                if (!sucess) {
+                    socket.emit(
+                        "pc-event-response",
+                        `<span style='color: "red";'>${msg}</span>`
+                    );
+                    return;
+                }
                 Auth.login(data).then(([success, response]) => {
                     var htmlResponse = `<span style='color: ${
                         success ? "green" : "red"
@@ -112,6 +139,12 @@ class HandleIO {
             this.io.emit("relay_state-update", relayState);
             this.io.emit("pc_state-update", pcState);
         });
+    }
+
+    async handleSessions(socket) {
+        var clientIp = socket.request.connection.remoteAddress;
+
+        return await Session.checkIfTooManyRequests(clientIp);
     }
 
     activateRelay(time) {

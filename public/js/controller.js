@@ -46,8 +46,9 @@ Relay_Form.addEventListener("submit", function (e) {
     if (Relay_Firstname.value && Relay_Password.value) {
         data = {
             username: Relay_Firstname.value,
-            password: Relay_Password.value
+            password: Relay_Password.value,
         };
+
         socket.emit("relay authentification", data);
 
         Relay_Firstname.value = "";
@@ -72,7 +73,7 @@ PC_Form.addEventListener("submit", function (e) {
     if (PC_Firstname.value && PC_Password.value) {
         data = {
             username: PC_Firstname.value,
-            password: PC_Password.value
+            password: PC_Password.value,
         };
         socket.emit("pc authentification", data);
 

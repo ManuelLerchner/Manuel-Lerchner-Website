@@ -16,7 +16,7 @@ class Authentification {
         let validPassword = await UserInDB.validPassword(password);
 
         if (!validPassword) {
-            return [false, "Wrong Password"];
+            return [false, "Wrong Username or Password"];
         }
 
         if (!UserInDB.activated == true) {

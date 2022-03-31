@@ -144,7 +144,10 @@ class HandleIO {
     async handleSessions(socket) {
         var clientIp = socket.request.connection.remoteAddress;
 
-        return await Session.checkIfTooManyRequests(clientIp);
+        var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+        // let [succ, msg] = await Sessions.checkIfTooManyRequests(ip);
+
+        return await Session.checkIfTooManyRequests(ip);
     }
 
     activateRelay(time) {

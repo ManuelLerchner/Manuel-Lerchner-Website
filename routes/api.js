@@ -13,7 +13,8 @@ const Sessions = new HandleSession();
 
 //  Post /api/relay
 router.post("/relay", async (req, res) => {
-    let [succ, msg] = await Sessions.checkIfTooManyRequests(req.ip);
+    var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+    let [succ, msg] = await Sessions.checkIfTooManyRequests(ip);
 
     if (!succ) {
         res.status(400).send(msg);

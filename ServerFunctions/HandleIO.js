@@ -37,11 +37,10 @@ class HandleIO {
     handleEvents() {
         this.io.on("connection", (socket) => {
             let clientIp = socket.request.connection._peername.address;
-            if (!clientIp) {
-                try {
-                    clientIp = socket.request.headers["x-forwarded-for"];
-                } catch (e) {}
-            }
+
+            try {
+                clientIp = socket.request.headers["x-forwarded-for"];
+            } catch (e) {}
 
             console.log(new Date() + " - Connection from: " + clientIp);
 
@@ -154,11 +153,10 @@ class HandleIO {
 
     async handleSessions(socket) {
         let clientIp = socket.request.connection._peername.address;
-        if (!clientIp) {
-            try {
-                clientIp = socket.request.headers["x-forwarded-for"];
-            } catch (e) {}
-        }
+
+        try {
+            clientIp = socket.request.headers["x-forwarded-for"];
+        } catch (e) {}
 
         return await Session.checkIfTooManyRequests(clientIp);
     }

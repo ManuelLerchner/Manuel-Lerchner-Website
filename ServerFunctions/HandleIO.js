@@ -17,11 +17,13 @@ const Auth = new Authentification();
 const Email = new EmailService();
 const Session = new SessionService();
 
-Session.deleteOldRequest();
+setTimeout(() => {
+    Session.deleteOldRequest();
+}, 10 * 1000);
 
 setInterval(() => {
     Session.deleteOldRequest();
-}, 1000 * 60 * 60);
+}, 24 * 60 * 60 * 1000);
 
 //Initial States
 var relayState = false;
@@ -142,12 +144,9 @@ class HandleIO {
     }
 
     async handleSessions(socket) {
-        var clientIp = socket.request.connection.remoteAddress;
+        var clientIp = socket.request.connection._peername.address;
 
-        var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
-        // let [succ, msg] = await Sessions.checkIfTooManyRequests(ip);
-
-        return await Session.checkIfTooManyRequests(ip);
+        return await Session.checkIfTooManyRequests(clientIp);
     }
 
     activateRelay(time) {

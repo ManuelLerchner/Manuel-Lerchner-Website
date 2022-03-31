@@ -48,10 +48,14 @@ class SessionEvents {
     }
 
     async deleteOldRequest() {
-        let date = new Date();
-        let difference = date - MIN_DELTA;
+        try {
+            let date = new Date();
+            let difference = date - MIN_DELTA;
 
-        await Requests.deleteMany({ date: { $lte: difference } });
+            await Requests.deleteMany({ date: { $lte: difference } });
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 

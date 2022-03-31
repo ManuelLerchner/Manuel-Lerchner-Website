@@ -7,6 +7,7 @@ const http = require("http");
 const https = require("https");
 const fs = require("fs");
 const subdomain = require("express-subdomain");
+const cors = require("cors");
 
 //Config
 dotenv.config({ path: "./config/config.env" });
@@ -39,6 +40,8 @@ app.engine(
         extname: "hbs",
     })
 );
+
+app.use(cors());
 
 //Routes
 app.use("/", require("./routes/home"));

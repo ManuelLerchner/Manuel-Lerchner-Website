@@ -146,7 +146,8 @@ class HandleIO {
     async handleSessions(socket) {
         let clientIp = socket.request.connection._peername.address;
         try {
-            clientIp = headers["x-forwarded-for"];
+            //get x-forwarded-for header (which is set by nginx)
+            clientIp = socket.request.headers["x-forwarded-for"];
         } catch (e) {}
 
         return await Session.checkIfTooManyRequests(clientIp);

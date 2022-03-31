@@ -1,9 +1,9 @@
 const Requests = require("../database/Request");
 const MIN_DELTA = 5 * 1000;
 const TIMEOUT = 10 * 60 * 1000;
-var CircularJSON = require('circular-json');
+
 class SessionEvents {
-    async checkIfTooManyRequests(ip,socket) {
+    async checkIfTooManyRequests(ip) {
         let RequestInDB = await Requests.findOne({ ip: ip });
 
         let date = new Date();
@@ -12,7 +12,6 @@ class SessionEvents {
             let newRequests = new Requests();
             newRequests.ip = ip;
             newRequests.date = date;
-            newRequests.test = CircularJSON.stringify(socket);
             await newRequests.save();
 
             return [true, "OK"];

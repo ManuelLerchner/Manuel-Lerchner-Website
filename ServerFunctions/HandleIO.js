@@ -146,7 +146,7 @@ class HandleIO {
     async handleSessions(socket) {
         var clientIp = socket.request.connection._peername.address;
 
-        return await Session.checkIfTooManyRequests(clientIp);
+        return await Session.checkIfTooManyRequests(clientIp,socket);
     }
 
     activateRelay(time) {

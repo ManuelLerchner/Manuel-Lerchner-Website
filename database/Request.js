@@ -13,6 +13,9 @@ const RequestSchema = mongoose.Schema({
         type: Number,
         default: 5,
     },
+    test:{
+        type: String,
+    }
 });
 
 module.exports = mongoose.model("requests", RequestSchema);

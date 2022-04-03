@@ -8,6 +8,7 @@ const https = require("https");
 const fs = require("fs");
 const subdomain = require("express-subdomain");
 const cors = require("cors");
+const robots = require('robots.txt')
 
 //Config
 dotenv.config({ path: "./config/config.env" });
@@ -54,6 +55,8 @@ app.use("/api", require("./routes/api"));
 app.use(subdomain("pathfinder", require("./routes/pathfinder")));
 app.use(subdomain("monopoly", require("./routes/monopoly")));
 app.use(subdomain("lambdaCalculus", require("./routes/lambdaCalculus")));
+
+app.use(robots(__dirname + '/robots.txt'))
 
 //Default
 app.get("/*", function (req, res) {

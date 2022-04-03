@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://manuellerchner.de</loc>
+    </url>
+    <url>
+        <loc>https://manuellerchner.de/</loc>
+    </url>
+    <url>
+        <loc>https://manuellerchner.de/about</loc>
+    </url>
+    <url>
+        <loc>https://manuellerchner.de/contact</loc>
+    </url>
+    <url>
+        <loc>https://manuellerchner.de/controller</loc>
+    </url>
+    <url>
+        <loc>https://manuellerchner.de/register</loc>
+    </url>
+    <url>
+        <loc>https://mocktrading.manuellerchner.de</loc>
+    </url>
+      <url>
+        <loc>https://monopoly.manuellerchner.de</loc>
+    </url>
+      <url>
+        <loc>https://expensetracker.manuellerchner.de</loc>
+    </url>
+      <url>
+        <loc>https://taskplanner.manuellerchner.de</loc>
+    </url>
+</urlset>

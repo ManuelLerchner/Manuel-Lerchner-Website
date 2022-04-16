@@ -57,7 +57,7 @@ router.post("/relay", async (req, res) => {
 });
 
 router.get("/relay", (req, res) => {
-    res.sendStatus(200);
+    res.send("Make a POST request to /api/relay");
 });
 
 module.exports = router;

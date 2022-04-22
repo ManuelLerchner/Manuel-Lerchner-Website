@@ -2,13 +2,13 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const dotenv = require("dotenv");
 const path = require("path");
-const socket = require("socket.io");
+const { Server } = require("socket.io");
 const http = require("http");
 const https = require("https");
 const fs = require("fs");
 const subdomain = require("express-subdomain");
 const cors = require("cors");
-const robots = require('robots.txt')
+const robots = require("robots.txt");
 
 //Config
 dotenv.config({ path: "./config/config.env" });
@@ -56,7 +56,7 @@ app.use(subdomain("pathfinder", require("./routes/pathfinder")));
 app.use(subdomain("monopoly", require("./routes/monopoly")));
 app.use(subdomain("lambdaCalculus", require("./routes/lambdaCalculus")));
 
-app.use(robots(__dirname + '/robots.txt'))
+app.use(robots(__dirname + "/robots.txt"));
 
 //Default
 app.get("/*", function (req, res) {
@@ -65,7 +65,7 @@ app.get("/*", function (req, res) {
 
 //Create Servers
 const serverHTTP = http.createServer(app);
-const ioHTTP = socket(serverHTTP);
+const ioHTTP = new Server(serverHTTP);
 
 //Start IO
 const IOHTTP = new HandleIO(ioHTTP);
@@ -73,9 +73,7 @@ IOHTTP.handleEvents();
 
 //Ports
 var HTTP_PORT =
-    process.env.NODE_ENV == "developement"
-        ? process.env.HTTP_DEV_PORT
-        : process.env.HTTP_PORT;
+    process.env.NODE_ENV == "developement" ? process.env.HTTP_DEV_PORT : process.env.HTTP_PORT;
 
 //Run Servers
 

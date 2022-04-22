@@ -54,13 +54,9 @@ Relay_Form.addEventListener("submit", function (e) {
         Relay_Firstname.value = "";
         Relay_Password.value = "";
 
-        document
-            .querySelector("label[for=" + Relay_Firstname.id + "]")
-            .classList.remove("active");
+        document.querySelector("label[for=" + Relay_Firstname.id + "]").classList.remove("active");
 
-        document
-            .querySelector("label[for=" + Relay_Password.id + "]")
-            .classList.remove("active");
+        document.querySelector("label[for=" + Relay_Password.id + "]").classList.remove("active");
 
         Relay_Firstname.classList.remove("valid");
         Relay_Password.classList.remove("valid");
@@ -80,12 +76,8 @@ PC_Form.addEventListener("submit", function (e) {
         PC_Firstname.value = "";
         PC_Password.value = "";
 
-        document
-            .querySelector("label[for=" + PC_Firstname.id + "]")
-            .classList.remove("active");
-        document
-            .querySelector("label[for=" + PC_Password.id + "]")
-            .classList.remove("active");
+        document.querySelector("label[for=" + PC_Firstname.id + "]").classList.remove("active");
+        document.querySelector("label[for=" + PC_Password.id + "]").classList.remove("active");
 
         PC_Firstname.classList.remove("valid");
         PC_Password.classList.remove("valid");

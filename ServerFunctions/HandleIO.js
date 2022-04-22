@@ -36,6 +36,7 @@ class HandleIO {
 
     handleEvents() {
         this.io.on("connection", (socket) => {
+            console.log("New Connection");
             let clientIp = socket.request.connection._peername.address;
 
             try {
@@ -87,10 +88,7 @@ class HandleIO {
                 let [sucess, msg] = await this.handleSessions(socket);
 
                 if (!sucess) {
-                    socket.emit(
-                        "pc-event-response",
-                        `<span style='color: "red";'>${msg}</span>`
-                    );
+                    socket.emit("pc-event-response", `<span style='color: "red";'>${msg}</span>`);
                     return;
                 }
                 Auth.login(data).then(([success, response]) => {
@@ -129,10 +127,7 @@ class HandleIO {
 
             //User GeoLocation
             socket.on("userInfo", (data) => {
-                let dateTime = new Date()
-                    .toISOString()
-                    .replace(/T/, " ")
-                    .replace(/\..+/, "");
+                let dateTime = new Date().toISOString().replace(/T/, " ").replace(/\..+/, "");
 
                 var str = dateTime + " " + JSON.stringify(data) + "\n";
                 fs.appendFile("./logs/accesslog.txt", str, function (err) {

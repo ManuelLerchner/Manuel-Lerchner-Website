@@ -67,14 +67,18 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
-        <!-- Socket -->
-        <script defer src="/socket.io/socket.io.js"></script>
+      
 
 
     </head>
         {{>_header}}
         {{{body}}}
         {{>_footer}}
+          <!-- Socket -->
+      <script src="/socket.io/socket.io.js"></script>
+      <script>
+        var socket = io();
+      </script>
     <body>
 
     </body>

@@ -11,11 +11,9 @@
 .card {
     margin: 40px;
 
-    box-shadow: -6px -6px 20px 10px rgb(63, 143, 123),
-        6px 6px 20px 10px rgb(212, 133, 29);
+    box-shadow: -6px -6px 20px 10px rgb(63, 143, 123), 6px 6px 20px 10px rgb(212, 133, 29);
 
-    box-shadow: -6px -6px 20px 10px rgb(113, 63, 143),
-        6px 6px 20px 10px rgb(245, 141, 6);
+    box-shadow: -6px -6px 20px 10px rgb(113, 63, 143), 6px 6px 20px 10px rgb(245, 141, 6);
 
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -42,8 +40,8 @@
 
     font-weight: 500 !important;
 
-    text-shadow: 4px 3px 3px black, -2px 2px 3px black,
-        4px 4px 3px rgb(88, 88, 88), 4px -2px 3px rgb(61, 61, 61);
+    text-shadow: 4px 3px 3px black, -2px 2px 3px black, 4px 4px 3px rgb(88, 88, 88),
+        4px -2px 3px rgb(61, 61, 61);
 }
 
 .card-image img {
@@ -285,6 +283,7 @@ td {
     padding: 1em;
     background-color: rgb(255, 255, 255, 0.2);
     border-bottom: 1px solid black;
+    word-wrap: break-word;
 }
 
 th {
@@ -304,6 +303,7 @@ ol {
 
 .hljs {
     border-radius: 1em;
+    font-size: 20px;
 }
 
 pre {
@@ -317,6 +317,9 @@ pre {
     width: 65%;
 }
 
+img {
+    image-rendering: crisp-edges;
+}
 .inlineImg,
 .inlineImgBig {
     margin-top: 20px;
@@ -362,8 +365,9 @@ html {
     border-bottom-right-radius: 10px !important;
 }
 
-.card-content{
+.card-content {
     padding-left: 30px !important;
     padding-right: 30px !important;
     padding-bottom: 20px !important;
+    overflow-y: auto !important;
 }

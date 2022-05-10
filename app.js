@@ -52,6 +52,8 @@ app.use("/about", require("./routes/about"));
 app.use("/register", require("./routes/register"));
 app.use("/projects", require("./routes/projects"));
 app.use("/api", require("./routes/api"));
+app.use("/datenschutzerklaerung", require("./routes/datenschutzerklaerung"));
+app.use("/impressum", require("./routes/impressum"));
 app.use(subdomain("pathfinder", require("./routes/pathfinder")));
 app.use(subdomain("monopoly", require("./routes/monopoly")));
 app.use(subdomain("lambdaCalculus", require("./routes/lambdaCalculus")));

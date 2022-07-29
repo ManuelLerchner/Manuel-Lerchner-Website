@@ -3,17 +3,16 @@ const router = express.Router();
 
 const Authentification = require("../ServerFunctions/HandleAuthentification.js");
 const RelayGPIO = require("../ServerFunctions/HandleGPIO.js");
-const EMailService = require("../ServerFunctions/HandleEMail.js");
 const HandleSession = require("../ServerFunctions/HandleSession.js");
+const Email = require("../ServerFunctions/HandleEMail.js");
 
 const Auth = new Authentification();
 const Relay = new RelayGPIO();
-const Email = new EMailService();
 const Sessions = new HandleSession();
 
 //  Post /api/relay
 router.post("/relay", async (req, res) => {
-    var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress 
+    var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress
     let [succ, msg] = await Sessions.checkIfTooManyRequests(ip);
 
     if (!succ) {

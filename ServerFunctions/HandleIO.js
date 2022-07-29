@@ -5,8 +5,8 @@ const dotenv = require("dotenv");
 const GPIO = require("./HandleGPIO.js");
 const PCRemote = require("./HandlePCRemote.js");
 const Authentification = require("./HandleAuthentification.js");
-const EmailService = require("./HandleEMail.js");
 const SessionService = require("./HandleSession.js");
+const Email = require("./HandleEMail.js");
 
 //Config
 dotenv.config({ path: "./config/config.env" });
@@ -14,7 +14,6 @@ dotenv.config({ path: "./config/config.env" });
 const Relay = new GPIO();
 const PC = new PCRemote();
 const Auth = new Authentification();
-const Email = new EmailService();
 const Session = new SessionService();
 
 setTimeout(() => {

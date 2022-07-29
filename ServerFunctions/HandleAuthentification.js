@@ -1,7 +1,6 @@
 const User = require("../database/User");
 
-const EMailService = require("./HandleEMail.js");
-const Email = new EMailService();
+const Email = require("./HandleEMail.js");
 
 class Authentification {
     async login(data) {

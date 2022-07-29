@@ -33,13 +33,6 @@ class EMailService {
             },
         });
 
-        this.transporter.on("token", (token) => {
-            console.log("A new access token was generated");
-            console.log("User: %s", token.user);
-            console.log("Access Token: %s", token.accessToken);
-            console.log("Expires: %s", new Date(token.expires));
-        });
-
         this.sendMail("Website ready!", "The Website just launched, and is now ready to use!")
     }
 

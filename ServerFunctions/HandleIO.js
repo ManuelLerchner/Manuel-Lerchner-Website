@@ -33,14 +33,23 @@ class HandleIO {
         this.io = io;
     }
 
+    getIp(socket) {
+        let clientIp = undefined;
+        try {
+            clientIp = socket.request.headers["x-forwarded-for"];
+        } catch (e) {
+        }
+        if (clientIp === undefined) {
+            clientIp = socket.request.connection._peername.address;
+        }
+        return clientIp;
+    }
+
     handleEvents() {
         this.io.on("connection", (socket) => {
             console.log("New Connection");
-            let clientIp = socket.request.connection._peername.address;
 
-            try {
-                clientIp = socket.request.headers["x-forwarded-for"];
-            } catch (e) {}
+            let clientIp= this.getIp(socket)
 
             console.log(new Date() + " - Connection from: " + clientIp);
 
@@ -55,7 +64,6 @@ class HandleIO {
             //Relay Authentification
             socket.on("relay authentification", async (data) => {
                 let [sucess, msg] = await this.handleSessions(socket);
-
                 if (!sucess) {
                     socket.emit(
                         "relay-event-response",
@@ -65,9 +73,8 @@ class HandleIO {
                 }
 
                 Auth.login(data).then(([success, response]) => {
-                    var htmlResponse = `<span style='color: ${
-                        success ? "green" : "red"
-                    };'>${response}</span>`;
+                    var htmlResponse = `<span style='color: ${success ? "green" : "red"
+                        };'>${response}</span>`;
 
                     socket.emit("relay-event-response", htmlResponse);
 
@@ -91,9 +98,8 @@ class HandleIO {
                     return;
                 }
                 Auth.login(data).then(([success, response]) => {
-                    var htmlResponse = `<span style='color: ${
-                        success ? "green" : "red"
-                    };'>${response}</span>`;
+                    var htmlResponse = `<span style='color: ${success ? "green" : "red"
+                        };'>${response}</span>`;
 
                     socket.emit("pc-event-response", htmlResponse);
 
@@ -116,9 +122,8 @@ class HandleIO {
             //Register Form
             socket.on("register form", (data) => {
                 Auth.register(data).then(([success, response]) => {
-                    var htmlResponse = `<span style='color: ${
-                        success ? "green" : "red"
-                    };'>${response}</span>`;
+                    var htmlResponse = `<span style='color: ${success ? "green" : "red"
+                        };'>${response}</span>`;
 
                     socket.emit("registration-event-response", htmlResponse);
                 });
@@ -146,11 +151,7 @@ class HandleIO {
     }
 
     async handleSessions(socket) {
-        let clientIp = socket.request.connection._peername.address;
-
-        try {
-            clientIp = socket.request.headers["x-forwarded-for"];
-        } catch (e) {}
+        let clientIp= this.getIp(socket)
 
         return await Session.checkIfTooManyRequests(clientIp);
     }

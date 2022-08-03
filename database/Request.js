@@ -11,7 +11,11 @@ const RequestSchema = mongoose.Schema({
     },
     triesLeft: {
         type: Number,
-        default: 5,
+        default: 3 - 1,
+    },
+    notifiedAdmin: {
+        type: Boolean,
+        default: false,
     },
 });
 

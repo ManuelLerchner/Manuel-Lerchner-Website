@@ -2,6 +2,8 @@ const Requests = require("../database/Request");
 const MIN_DELTA = 5 * 1000;
 const TIMEOUT = 10 * 60 * 1000;
 
+const Email = require("./HandleEMail.js");
+
 class SessionEvents {
     async checkIfTooManyRequests(ip) {
         try {
@@ -24,12 +26,25 @@ class SessionEvents {
             }
 
             if (RequestInDB.triesLeft <= 0) {
+
+                if (!RequestInDB.notifiedAdmin) {
+                    Email.sendMail(
+                        "Login Warning",
+                        "Too many requests from: " + ip + "\n" +
+                        "Disabling IP for: " + TIMEOUT / 1000 + " seconds",
+                    );
+                    await Requests.updateOne(
+                        { ip: ip },
+                        { $set: { notifiedAdmin: true } }
+                    );
+                }
+
                 if (difference < TIMEOUT) {
                     return [
                         false,
                         "Try again in " +
-                            Math.floor(((TIMEOUT - difference) / 1000 / 60) * 100) / 100 +
-                            " minutes",
+                        Math.floor(((TIMEOUT - difference) / 1000 / 60) * 100) / 100 +
+                        " minutes",
                     ];
                 }
 

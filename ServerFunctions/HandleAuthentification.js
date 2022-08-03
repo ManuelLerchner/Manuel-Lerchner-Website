@@ -9,7 +9,7 @@ class Authentification {
         let UserInDB = await User.findOne({ username: username });
 
         if (UserInDB === null) {
-            return [false, "Unknown Username"];
+            return [false, "Wrong Username or Password"];
         }
 
         let validPassword = await UserInDB.validPassword(password);

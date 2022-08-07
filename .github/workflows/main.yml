@@ -21,4 +21,4 @@ jobs:
         run: npm install
 
       - name: Restart Server
-        run: pm2 restart "3000:Manuel-Lerchner"
+        run: pm2 restart "3000:Manuel-Lerchner-Website"

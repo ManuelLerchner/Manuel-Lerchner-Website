@@ -49,7 +49,7 @@ class EMailService {
 
         receivers.forEach((receiver) => {
             if (process.env.NODE_ENV == "developement") {
-                console.log(`Suppressed sending email '${subject}' to '${receiver}'`);
+                console.log(`Surpressed Sending email '${subject}' - '${text}' to '${receiver}'`);
             } else {
                 const mailOptions = {
                     from: process.env.EMAIL_USER,
@@ -60,9 +60,9 @@ class EMailService {
 
                 this.transporter.sendMail(mailOptions, function (error, info) {
                     if (error) {
-                        console.log(error);
+                        console.error(error);
                     } else {
-                        console.log(subject, "sent an Email");
+                        console.log(`Sending email '${subject}' - '${text}' to '${receiver}'`);
                     }
                 });
             }

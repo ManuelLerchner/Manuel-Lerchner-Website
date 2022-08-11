@@ -47,11 +47,8 @@ class HandleIO {
 
     handleEvents() {
         this.io.on("connection", (socket) => {
-            console.log("New Connection");
-
-            let clientIp= this.getIp(socket)
-
-            console.log(new Date() + " - Connection from: " + clientIp);
+            let clientIp = this.getIp(socket)
+            console.log("New Connection from: " + clientIp);
 
             //Start PC Check Intervall
             var UpdateInterval = setInterval(
@@ -129,16 +126,6 @@ class HandleIO {
                 });
             });
 
-            //User GeoLocation
-            socket.on("userInfo", (data) => {
-                let dateTime = new Date().toISOString().replace(/T/, " ").replace(/\..+/, "");
-
-                var str = dateTime + " " + JSON.stringify(data) + "\n";
-                fs.appendFile("./logs/accesslog.txt", str, function (err) {
-                    if (err) return console.log(err);
-                });
-            });
-
             //Stop PC Check Intervall
             socket.on("disconnect", () => {
                 clearInterval(UpdateInterval);
@@ -151,7 +138,7 @@ class HandleIO {
     }
 
     async handleSessions(socket) {
-        let clientIp= this.getIp(socket)
+        let clientIp = this.getIp(socket)
 
         return await Session.checkIfTooManyRequests(clientIp);
     }

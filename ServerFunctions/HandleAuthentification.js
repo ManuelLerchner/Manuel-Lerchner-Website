@@ -1,20 +1,28 @@
 const User = require("../database/User");
 
 const Email = require("./HandleEMail.js");
+const mongoose = require('mongoose');
 
 class Authentification {
     async login(data) {
         let { username, password } = data;
 
-        let UserInDB = await User.findOne({ username: username });
+        if (mongoose.connection.readyState != 1) {
+            console.log(`Login of ${username} failed: Mongoose Connection Error`)
+            return [false, "Internal Server Error"];
+        }
+
+        let UserInDB = await User.findOne({ username: username.toString() });
 
         if (UserInDB === null) {
+            console.log(`Login attempt for ${username} failed: User not found`)
             return [false, "Wrong Username or Password"];
         }
 
         let validPassword = await UserInDB.validPassword(password);
 
         if (!validPassword) {
+            console.log(`Login attempt for ${username} failed: Wrong Password`)
             return [false, "Wrong Username or Password"];
         }
 
@@ -23,11 +31,17 @@ class Authentification {
         }
 
         //Login succesfull
+        console.log(`User: ${username} succesfully logged in`);
         return [true, "Succesfully authenticated"];
     }
 
     async register(data) {
         let { username, email, password1, password2 } = data;
+
+        if (mongoose.connection.readyState != 1) {
+            console.log(`Registration of ${username} failed: Mongoose Connection Error`)
+            return [false, "Internal Server Error"];
+        }
 
         let inputIsValid =
             username != "" && email != "" && password1 != "" && password2 != "";
@@ -42,11 +56,11 @@ class Authentification {
             return [false, "Passwords don't match"];
         }
 
-        if (await User.findOne({ email: email })) {
+        if (await User.findOne({ email: email.toString() })) {
             return [false, "Email already registered"];
         }
 
-        if (await User.findOne({ username: username })) {
+        if (await User.findOne({ username: username.toString() })) {
             return [false, "Username already registered"];
         }
 
@@ -61,6 +75,7 @@ class Authentification {
             "RaspberryPi Authentification-Service",
             `${username} / ${email} just registered`
         );
+        console.log(`User: ${username} / ${email} succesfully registered`);
         return [true, "Account registered"];
     }
 }

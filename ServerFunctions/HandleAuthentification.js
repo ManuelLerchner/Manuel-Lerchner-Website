@@ -12,7 +12,7 @@ class Authentification {
             return [false, "Internal Server Error"];
         }
 
-        let UserInDB = await User.findOne({ username: username });
+        let UserInDB = await User.findOne({ username: username.toString() });
 
         if (UserInDB === null) {
             console.log(`Login attempt for ${username} failed: User not found`)
@@ -56,11 +56,11 @@ class Authentification {
             return [false, "Passwords don't match"];
         }
 
-        if (await User.findOne({ email: email })) {
+        if (await User.findOne({ email: email.toString() })) {
             return [false, "Email already registered"];
         }
 
-        if (await User.findOne({ username: username })) {
+        if (await User.findOne({ username: username.toString() })) {
             return [false, "Username already registered"];
         }
 

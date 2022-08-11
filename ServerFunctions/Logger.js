@@ -8,7 +8,8 @@ winston.add(
                 format: "YYYY-MM-DD hh:mm:ss"
             }),
             winston.format.printf(i => `${i.timestamp} | ${i.level} | ${i.message}`)
-        )
+        ),
+        maxsize: 5242880
     })
 );
 

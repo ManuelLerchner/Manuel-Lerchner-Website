@@ -71,7 +71,6 @@ Register_Form.addEventListener("submit", function (e) {
 
 // Registration Event Response
 socket.on("registration-event-response", (response) => {
-    console.log(response);
     Register_ResponsePC.innerHTML = response;
     Register_ResponsePC.classList.remove("hidden");
 

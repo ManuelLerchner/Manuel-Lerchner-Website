@@ -61,7 +61,7 @@ class SessionEvents {
 
             return [true, "OK"];
         } catch (e) {
-            console.log(e);
+            console.error(e);
             return [false, "Error"];
         }
     }
@@ -73,7 +73,7 @@ class SessionEvents {
 
             await Requests.deleteMany({ date: { $lte: difference } });
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     }
 }

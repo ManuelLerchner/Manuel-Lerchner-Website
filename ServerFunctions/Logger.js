@@ -1,4 +1,4 @@
-var winston = require("winston");
+const winston = require("winston");
 
 winston.add(
     new winston.transports.File({
@@ -7,10 +7,22 @@ winston.add(
             winston.format.timestamp({
                 format: "YYYY-MM-DD hh:mm:ss"
             }),
-            winston.format.json()
+            winston.format.printf(i => `${i.timestamp} | ${i.level} | ${i.message}`)
         )
     })
 );
+
+winston.add(
+    new winston.transports.Console({
+        format: winston.format.combine(
+            winston.format.colorize(),
+            winston.format.timestamp({
+                format: "YYYY-MM-DD hh:mm:ss"
+            }),
+            winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
+        )
+    })
+)
 
 console.error = winston.error;
 console.log = winston.info;

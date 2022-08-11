@@ -4,8 +4,6 @@ const dotenv = require("dotenv");
 const path = require("path");
 const { Server } = require("socket.io");
 const http = require("http");
-const https = require("https");
-const fs = require("fs");
 const subdomain = require("express-subdomain");
 const cors = require("cors");
 const robots = require("robots.txt");
@@ -14,9 +12,7 @@ const robots = require("robots.txt");
 dotenv.config({ path: "./config/config.env" });
 
 //Log to File
-if (process.env.NODE_ENV == "production") {
-    require("./ServerFunctions/Logger.js");
-}
+require("./ServerFunctions/Logger.js")
 
 const HandleIO = require("./ServerFunctions/HandleIO.js");
 
@@ -78,7 +74,6 @@ var HTTP_PORT =
     process.env.NODE_ENV == "developement" ? process.env.HTTP_DEV_PORT : process.env.HTTP_PORT;
 
 //Run Servers
-
 serverHTTP.listen(
     HTTP_PORT,
     console.log(

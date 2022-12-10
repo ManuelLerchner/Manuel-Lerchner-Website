@@ -82,4 +82,8 @@ router.post("/notify_admin", (req, res) => {
     res.sendStatus(200);
 })
 
+router.get("/notify_admin", (req, res) => {
+    res.send("Make a POST request to /api/notify_admin");
+});
+
 module.exports = router;

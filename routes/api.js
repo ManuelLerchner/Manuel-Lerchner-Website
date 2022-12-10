@@ -59,4 +59,27 @@ router.get("/relay", (req, res) => {
     res.send("Make a POST request to /api/relay");
 });
 
+router.post("/notify_admin", (req, res) => {
+    try {
+        username = req.body.username;
+        message = req.body.message;
+    } catch (err) {
+        res.sendStatus(400); //Bad parameters;
+    }
+
+    if (!username || !message) {
+        res.sendStatus(400); //Bad parameters;
+        return;
+    }
+
+
+    Email.sendMail(
+        username,
+        message,
+        false
+    );
+
+    res.sendStatus(200);
+})
+
 module.exports = router;

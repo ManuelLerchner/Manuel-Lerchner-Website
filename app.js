@@ -28,6 +28,9 @@ app.use(express.static(path.join(__dirname, "public")));
 //bodyParser
 app.use(express.urlencoded({ extended: false }));
 
+//Json
+app.use(express.json());
+
 //Handlebar
 app.set("view engine", "hbs");
 app.engine(

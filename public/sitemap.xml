@@ -4,9 +4,6 @@
         <loc>https://manuellerchner.de</loc>
     </url>
     <url>
-        <loc>https://manuellerchner.de/</loc>
-    </url>
-    <url>
         <loc>https://manuellerchner.de/about</loc>
     </url>
     <url>
@@ -21,16 +18,22 @@
     <url>
         <loc>https://mocktrading.manuellerchner.de</loc>
     </url>
-      <url>
+    <url>
         <loc>https://monopoly.manuellerchner.de</loc>
     </url>
-      <url>
+    <url>
         <loc>https://expensetracker.manuellerchner.de</loc>
     </url>
-      <url>
+    <url>
         <loc>https://taskplanner.manuellerchner.de</loc>
     </url>
     <url>
         <loc>https://minecraft-bot.manuellerchner.de</loc>
+    </url>
+    <url>
+        <loc>https://tile-planner.manuellerchner.de</loc>
+    </url>
+    <url>
+        <loc>https://algoexplorer.manuellerchner.de</loc>
     </url>
 </urlset>

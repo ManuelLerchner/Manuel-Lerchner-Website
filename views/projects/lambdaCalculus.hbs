@@ -1,6 +1,6 @@
 <!-- Preview Data
 title: "Lambda Calculus",
-description: "In this project I built a parser and interpreter for the λ-calculus in Python. In the end I was able to create some smaller programms in my self-developed programming language",
+description: "In this project, I built a parser and interpreter for the λ-calculus in Python. In the end, I was able to create some smaller programs in my self-developed programming language",
 image: "/images/lambdaCalculusThumbnail.jpg",
 link: "https://lambdacalculus.manuellerchner.de",
 idx: "1",
@@ -8,895 +8,899 @@ date: "30. Jul 2021"
 -->
 
 <html lang="en">
-    <head>
-        <title>Lambda Calculus</title>
+  <head>
+    <title>Lambda Calculus</title>
 
-        <link
-            rel="stylesheet"
-            href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/monokai-sublime.min.css"
-        />
-        <script
-            src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"
-        ></script>
+    <link
+      rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/monokai-sublime.min.css"
+    />
+    <script
+      src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"
+    ></script>
 
-        <link rel="stylesheet" href="/css/project.css" />
+    <link rel="stylesheet" href="/css/project.css" />
 
-    </head>
+  </head>
 
-    <body class="bg">
+  <body class="bg">
 
-        <!-- First Parallax  -->
-        <div id="index-banner" class="parallax-container border paralaxBig">
-            <div class="top">
-                <div class="container">
+    <!-- First Parallax  -->
+    <div id="index-banner" class="parallax-container border paralaxBig">
+      <div class="top">
+        <div class="container">
 
-                    <h1 class="header center white-text text-lighten-2 bold">
-                        Lambda Calculus</h1>
+          <h1 class="header center white-text text-lighten-2 bold">
+            Lambda Calculus</h1>
 
-                    <h5 class="subtext center white-text text-lighten-2">August 04, 2021</h5>
+          <h5 class="subtext center white-text text-lighten-2">August 04, 2021</h5>
 
+        </div>
+      </div>
+
+      <div class="parallax"><img
+          class="blurr parallaxImage"
+          src="/images/halfLive.jpg"
+        /></div>
+    </div>
+
+    <div class="row">
+      <div class="col l10 offset-l1 s12">
+
+        <div class="card horizontal blue-grey darken-3 projectText contents">
+
+          <div class="card-stacked">
+            <div class="card-content">
+
+              <div class="col l10 offset-l1 s12 m12">
+                <div>
+                  <h5
+                    class="orange-text text-darken-2 projectTitle"
+                  >Contents</h5>
+
+                  <ul>
+                    <li><a href="#What is λ-calculus?">1) What is λ-calculus?</a>
+
+                    </li>
+                    <li><a href="#λ-Plan">2) Build your own λ-Interpreter</a></li>
+                    <li><a href="#λ-Lexer">3) The Lexer</a></li>
+                    <li><a href="#λ-Parser">4) The Parser</a></li>
+                    <li><a href="#λ-Interpreter">5) The Interpreter</a></li>
+                    <li><a href="#λ-Applications">6) λ-Applications</a>
+                      <ul>
+                        <li><a href="#Boolean">&emsp; a) Boolean Logic</a></li>
+                        <li><a href="#Arithmetic">&emsp; b) Arithmetic
+                            Operations</a></li>
+                        <li><a href="#Recursion">&emsp; c) Recursion</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#λ-Conclusion">7) Conclusion</a></li>
+
+                  </ul>
                 </div>
+
+              </div>
             </div>
 
-            <div class="parallax"><img
-                    class="blurr parallaxImage"
-                    src="/images/halfLive.jpg"
-                /></div>
+          </div>
+
+          <div class="card-image hide-on-med-and-down">
+            <img src="/projects/content.png" />
+          </div>
         </div>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="col l10 offset-l1 s12">
+    <!-- What is Lambda Calc Card -->
+    <div class="row" id="What is λ-calculus?">
+      <div class="col l10 offset-l1 s12 m12">
 
-                <div class="card horizontal blue-grey darken-3 projectText contents">
-
-                    <div class="card-stacked">
-                        <div class="card-content">
-
-                            <div class="col l10 offset-l1 s12 m12">
-                                <div>
-                                    <h5 class="orange-text text-darken-2 projectTitle">Contents</h5>
-
-                                    <ul>
-                                        <li><a href="#What is λ-calculus?">1) What is λ-calculus?</a>
-
-                                        </li>
-                                        <li><a href="#λ-Plan">2) Build your own λ-Interpreter</a></li>
-                                        <li><a href="#λ-Lexer">3) The Lexer</a></li>
-                                        <li><a href="#λ-Parser">4) The Parser</a></li>
-                                        <li><a href="#λ-Interpreter">5) The Interpreter</a></li>
-                                        <li><a href="#λ-Applications">6) λ-Applications</a>
-                                            <ul>
-                                                <li><a href="#Boolean">&emsp; a) Boolean Logic</a></li>
-                                                <li><a href="#Arithmetic">&emsp; b) Arithmetic
-                                                        Operations</a></li>
-                                                <li><a href="#Recursion">&emsp; c) Recursion</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#λ-Conclusion">7) Conclusion</a></li>
-
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="card-image hide-on-med-and-down">
-                        <img src="/projects/content.png" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- What is Lambda Calc Card -->
-        <div class="row" id="What is λ-calculus?">
+        <div class="blue-grey darken-4">
+          <div class="row">
             <div class="col l10 offset-l1 s12 m12">
 
-                <div class="blue-grey darken-4">
-                    <div class="row">
-                        <div class="col l10 offset-l1 s12 m12">
+              <div class="card-content grey-text text-lighten-4 projectText">
+                <h5 class="orange-text text-darken-2 projectTitle">What is
+                  λ-calculus?</h5>
 
-                            <div class="card-content grey-text text-lighten-4 projectText">
-                                <h5 class="orange-text text-darken-2 projectTitle">What is
-                                    λ-calculus?</h5>
+                <p class="section">
+                  Lambda calculus is a formal system in mathematical logic for
+                  expressing computation based on function abstraction and
+                  application using variable binding and substitution.<br />
+                  Lambda calculus was introduced by the mathematician Alonzo
+                  Church in the 1930s as part of his research into the
+                  foundations of mathematics.</p>
+                <p class="section">
+                  Lambda calculus consists of constructing lambda terms and
+                  performing reduction operations on them.
+                  <br />In the simplest form of lambda calculus, terms are built
+                  using only the following rules:
+                </p>
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <table class="highlight grey darken-3 white-text">
+                      <thead class="highlight">
+                        <tr>
+                          <th colspan="1">Syntax</th>
+                          <th>Name</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
 
-                                <p class="section">
-                                    Lambda calculus is a formal system in mathematical logic for
-                                    expressing computation based on function abstraction and
-                                    application using variable binding and substitution.<br />
-                                    Lambda calculus was introduced by the mathematician Alonzo
-                                    Church in the 1930s as part of his research into the foundations
-                                    of mathematics.</p>
-                                <p class="section">
-                                    Lambda calculus consists of constructing lambda terms and
-                                    performing reduction operations on them.
-                                    <br />In the simplest form of lambda calculus, terms are built
-                                    using only the following rules:
-                                </p>
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <table class="highlight grey darken-3 white-text">
-                                            <thead class="highlight">
-                                                <tr>
-                                                    <th colspan="1">Syntax</th>
-                                                    <th>Name</th>
-                                                    <th>Description</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td>x</td>
-                                                    <td>Variable</td>
-                                                    <td>A character representing a parameter or a
-                                                        value.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>(λx.M)</td>
-                                                    <td>Abstraction</td>
-                                                    <td>
-                                                        Function definition.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>(A B)</td>
-                                                    <td>Application</td>
-                                                    <td>
-                                                        Applying a function to an argument.
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <p class="section">
-                                    There also exist some ways to reduce a given lambda expression:
-                                </p>
-
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <table class="highlight grey darken-3 white-text">
-                                            <thead>
-                                                <tr>
-                                                    <th colspan="1">Syntax</th>
-                                                    <th>Name</th>
-                                                    <th>Description</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td>λx.M[x] →<br />λy.M[y]</td>
-                                                    <td>α-conversion</td>
-                                                    <td>Renaming the bound variables to avoid
-                                                        collisions.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>(λx.M E) →<br />M[x:=E]</td>
-                                                    <td>β-reduction</td>
-                                                    <td>
-                                                        Replacing the variables with the argument in
-                                                        the body of the abstraction.</td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    In the next sections we are going further explore the
-                                    possibilies of this kind of programming language.
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
+                      <tbody>
+                        <tr>
+                          <td>x</td>
+                          <td>Variable</td>
+                          <td>A character representing a parameter or a value.</td>
+                        </tr>
+                        <tr>
+                          <td>(λx.M)</td>
+                          <td>Abstraction</td>
+                          <td>
+                            Function definition.</td>
+                        </tr>
+                        <tr>
+                          <td>(A B)</td>
+                          <td>Application</td>
+                          <td>
+                            Applying a function to an argument.
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-            </div>
-        </div>
+                <p class="section">
+                  There also exist some ways to reduce a given lambda
+                  expression:
+                </p>
 
-        <!--How do you build your own λ-Interpreter Card -->
-        <div class="row" id="λ-Plan">
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <table class="highlight grey darken-3 white-text">
+                      <thead>
+                        <tr>
+                          <th colspan="1">Syntax</th>
+                          <th>Name</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td>λx.M[x] →<br />λy.M[y]</td>
+                          <td>α-conversion</td>
+                          <td>Renaming the bound variables to avoid collisions.</td>
+                        </tr>
+                        <tr>
+                          <td>(λx.M E) →<br />M[x:=E]</td>
+                          <td>β-reduction</td>
+                          <td>
+                            Replacing the variables with the argument in the
+                            body of the abstraction.</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <p class="section">
+                  In the next sections we are going further explore the
+                  possibilies of this kind of programming language.
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--How do you build your own λ-Interpreter Card -->
+    <div class="row" id="λ-Plan">
+      <div class="col l10 offset-l1 s12 m12">
+
+        <div class="blue-grey darken-4">
+          <div class="row">
             <div class="col l10 offset-l1 s12 m12">
 
-                <div class="blue-grey darken-4">
-                    <div class="row">
-                        <div class="col l10 offset-l1 s12 m12">
+              <div class="card-content grey-text text-lighten-4 projectText">
+                <h5 class="orange-text text-darken-2 projectTitle">Build your
+                  own λ-Interpreter
+                </h5>
 
-                            <div class="card-content grey-text text-lighten-4 projectText">
-                                <h5 class="orange-text text-darken-2 projectTitle">Build your own
-                                    λ-Interpreter
-                                </h5>
+                <p class="section">
+                  An Interpreter is a complex program, so it will be easier if
+                  we split the task of parsing and interpreting the given
+                  expression into multiple smaller stages:
+                </p>
 
-                                <p class="section">
-                                    An Interpreter is a complex program, so it will be easier if we
-                                    split the task of parsing and interpreting the given expression
-                                    into multiple smaller stages:
-                                </p>
+                <!-- Table -->
+                <div class="row">
 
-                                <!-- Table -->
-                                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
 
-                                    <div class="col l10 offset-l1 s12 m12">
+                    <table class="highlight grey darken-3 white-text">
+                      <thead>
+                        <tr>
+                          <th scope="col" colspan="1"></th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="number">1.</td>
+                          <td>Lexer</td>
+                          <td>Turns a sequence of characters (plain text) into a
+                            sequence of tokens.</td>
+                        </tr>
+                        <tr>
+                          <td class="number">2.</td>
+                          <td>Parser</td>
+                          <td>Takes a sequence of tokens and produces an
+                            abstract syntax tree (AST)
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="number">3.</td>
+                          <td>Interpreter</td>
+                          <td>
+                            Interprets the AST of the source of a program on the
+                            fly (without compiling it first).</td>
+                        </tr>
+                      </tbody>
+                    </table>
 
-                                        <table class="highlight grey darken-3 white-text">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" colspan="1"></th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Description</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="number">1.</td>
-                                                    <td>Lexer</td>
-                                                    <td>Turns a sequence of characters (plain text)
-                                                        into a sequence of tokens.</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="number">2.</td>
-                                                    <td>Parser</td>
-                                                    <td>Takes a sequence of tokens and produces an
-                                                        abstract syntax tree (AST)
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="number">3.</td>
-                                                    <td>Interpreter</td>
-                                                    <td>
-                                                        Interprets the AST of the source of a
-                                                        program on the fly (without compiling it
-                                                        first).</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    Eventually we want to create a function which takes an input
-                                    string and performs the lexical analysis, the parsing, and the
-                                    interpreting and returns the reduced AST in the end. It could
-                                    look something like this:
-                                </p>
-
-                                <!-- Code -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python1" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    Attention: The following code snippets are condensed to the bare
-                                    minimum. You can find the full code on my
-                                    <a
-                                        href="https://github.com/ManuelLerchner/Random-Coding-Projects/tree/master/Python/LambdaCalculus"
-                                    >Github-Page</a>.
-
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
 
-        <!--The Lexer -->
-        <div class="row" id="λ-Lexer">
+                <p class="section">
+                  Eventually we want to create a function which takes an input
+                  string and performs the lexical analysis, the parsing, and the
+                  interpreting and returns the reduced AST in the end. It could
+                  look something like this:
+                </p>
+
+                <!-- Code -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python1" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">
+                  Attention: The following code snippets are condensed to the
+                  bare minimum. You can find the full code on my
+                  <a
+                    href="https://github.com/ManuelLerchner/Random-Coding-Projects/tree/master/Python/LambdaCalculus"
+                  >Github-Page</a>.
+
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--The Lexer -->
+    <div class="row" id="λ-Lexer">
+      <div class="col l10 offset-l1 s12 m12">
+
+        <div class="blue-grey darken-4">
+          <div class="row">
             <div class="col l10 offset-l1 s12 m12">
 
-                <div class=" blue-grey darken-4">
-                    <div class="row">
-                        <div class="col l10 offset-l1 s12 m12">
+              <div class="card-content grey-text text-lighten-4 projectText">
+                <h5 class="orange-text text-darken-2 projectTitle">The Lexer
+                </h5>
 
-                            <div class="card-content grey-text text-lighten-4 projectText">
-                                <h5 class="orange-text text-darken-2 projectTitle">The Lexer
-                                </h5>
+                <p class="section">
+                  A Lexer or sometimes called Tokenizer is a small programm
+                  which takes a sequence of characters (the "source code" of our
+                  λ-Expressions) and turs them into a sequence of predefinded
+                  Tokens.<br />
+                  In addition to analizing and splitting the input-string the
+                  lexer also has some utility-functions which we can later use
+                  to parse the expression.
+                </p>
 
-                                <p class="section">
-                                    A Lexer or sometimes called Tokenizer is a small programm which
-                                    takes a sequence of characters (the "source code" of our
-                                    λ-Expressions) and turs them into a sequence of predefinded
-                                    Tokens.<br />
-                                    In addition to analizing and splitting the input-string the
-                                    lexer also has some utility-functions which we can later use to
-                                    parse the expression.
-                                </p>
+                <!-- Lexer Code -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python2" class="code python">
+                      </code></pre>
+                  </div>
 
-                                <!-- Lexer Code -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python2" class="code python">
-                                            </code></pre>
-                                    </div>
-
-                                </div>
-                                <p class="section">
-                                    We also define a Token-class in which we store the type and the
-                                    possible value of our encountered symbols.
-                                </p>
-
-                                <!-- Token Code -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python3" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    This allows us to tokenize our first string:
-                                </p>
-
-                                <!-- Lexer Test Code -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python4" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    As result we get a list of all the tokens in the input string.
-                                    <br />This concludes the Lexer and we can now begin parsing the
-                                    expression.
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
+                <p class="section">
+                  We also define a Token-class in which we store the type and
+                  the possible value of our encountered symbols.
+                </p>
 
-        <!--The Parser -->
-        <div class="row" id="λ-Parser">
+                <!-- Token Code -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python3" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">
+                  This allows us to tokenize our first string:
+                </p>
+
+                <!-- Lexer Test Code -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python4" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">
+                  As result we get a list of all the tokens in the input string.
+                  <br />This concludes the Lexer and we can now begin parsing
+                  the expression.
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--The Parser -->
+    <div class="row" id="λ-Parser">
+      <div class="col l10 offset-l1 s12 m12">
+
+        <div class="blue-grey darken-4">
+          <div class="row">
             <div class="col l10 offset-l1 s12 m12">
 
-                <div class=" blue-grey darken-4">
-                    <div class="row">
-                        <div class="col l10 offset-l1 s12 m12">
+              <div class="card-content grey-text text-lighten-4 projectText">
+                <h5 class="orange-text text-darken-2 projectTitle">The Parser
+                </h5>
 
-                            <div class="card-content grey-text text-lighten-4 projectText">
-                                <h5 class="orange-text text-darken-2 projectTitle">The Parser
-                                </h5>
+                <p class="section">
+                  A Parser performs an analysis of the given tokens and creates
+                  an abstract syntax tree (AST). During parsing it closely
+                  follows the rules specified by the given "formal grammar"
+                </p>
 
-                                <p class="section">
-                                    A Parser performs an analysis of the given tokens and creates an
-                                    abstract syntax tree (AST). During parsing it closely follows
-                                    the rules specified by the given "formal grammar"
-                                </p>
+                <p class="section">
+                  Bevore we can start to parse our tokens, we first must specify
+                  the grammar the parser is going to follow:
+                </p>
 
-                                <p class="section">
-                                    Bevore we can start to parse our tokens, we first must specify
-                                    the grammar the parser is going to follow:
-                                </p>
+                <!-- Grammar -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python5" class="code python">
+                      </code></pre>
+                  </div>
 
-                                <!-- Grammar -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python5" class="code python">
-                                            </code></pre>
-                                    </div>
-
-                                </div>
-                                <p class="section">
-                                    In the following section some of the valid strings this grammar
-                                    allows are shown:
-                                </p>
-
-                                <!-- Gramamr Example -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python6" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    Now we can write our Parser, which impements the grammar rules
-                                    specified above:
-                                </p>
-
-                                <!-- Parser Code -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python7" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    We also need to define our Node-classes which hold information
-                                    about the underlying structure of groups of tokens.<br />
-                                    The goal is to create an abstract syntax tree (AST) which
-                                    contains all structural informations of the given tokens.<br
-                                    />The Node classes already contain some helper functions which
-                                    we later need to interpret the AST.
-                                </p>
-
-                                <!-- Node Code -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python8" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    Now we can parse the tokens we previously aquired from the Lexer
-                                    and create the abstract-syntax-tree:
-                                </p>
-
-                                <!-- Node Code -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python9" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    The AST is a Node that has references to other nodes inside
-                                    which also refer to their children nodes and so forth.<br />
-                                    In this example the AST is an Application Node which contains
-                                    another Application Node and a Variable Node. The internal
-                                    Application Node contains itself a Function Node that also
-                                    contains another Function Node inside.<br />
-                                    In the following image you can see a drawing of the AST with all
-                                    its sub-nodes.
-                                </p>
-
-                                <img class="center inlineImg" src="/projects/lambdaAST.png" />
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
+                <p class="section">
+                  In the following section some of the valid strings this
+                  grammar allows are shown:
+                </p>
 
-        <!--The Interpreter -->
-        <div class="row" id="λ-Interpreter">
+                <!-- Gramamr Example -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python6" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">
+                  Now we can write our Parser, which impements the grammar rules
+                  specified above:
+                </p>
+
+                <!-- Parser Code -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python7" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">
+                  We also need to define our Node-classes which hold information
+                  about the underlying structure of groups of tokens.<br />
+                  The goal is to create an abstract syntax tree (AST) which
+                  contains all structural informations of the given tokens.<br
+                  />The Node classes already contain some helper functions which
+                  we later need to interpret the AST.
+                </p>
+
+                <!-- Node Code -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python8" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">
+                  Now we can parse the tokens we previously aquired from the
+                  Lexer and create the abstract-syntax-tree:
+                </p>
+
+                <!-- Node Code -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python9" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">
+                  The AST is a Node that has references to other nodes inside
+                  which also refer to their children nodes and so forth.<br />
+                  In this example the AST is an Application Node which contains
+                  another Application Node and a Variable Node. The internal
+                  Application Node contains itself a Function Node that also
+                  contains another Function Node inside.<br />
+                  In the following image you can see a drawing of the AST with
+                  all its sub-nodes.
+                </p>
+
+                <img class="center inlineImg" src="/projects/lambdaAST.png" />
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--The Interpreter -->
+    <div class="row" id="λ-Interpreter">
+      <div class="col l10 offset-l1 s12 m12">
+
+        <div class="blue-grey darken-4">
+          <div class="row">
             <div class="col l10 offset-l1 s12 m12">
 
-                <div class=" blue-grey darken-4">
-                    <div class="row">
-                        <div class="col l10 offset-l1 s12 m12">
+              <div class="card-content grey-text text-lighten-4 projectText">
+                <h5 class="orange-text text-darken-2 projectTitle">The
+                  Interpreter
+                </h5>
 
-                            <div class="card-content grey-text text-lighten-4 projectText">
-                                <h5 class="orange-text text-darken-2 projectTitle">The Interpreter
-                                </h5>
+                <p class="section">
+                  The Interpreter takes the AST we evaluated bevore and tries to
+                  interpet it. In this case, due to the nature of
+                  lambda-calculus the interpreter just simplifies the given AST
+                  as far as possible.
+                </p>
 
-                                <p class="section">
-                                    The Interpreter takes the AST we evaluated bevore and tries to
-                                    interpet it. In this case, due to the nature of lambda-calculus
-                                    the interpreter just simplifies the given AST as far as
-                                    possible.
-                                </p>
+                <!-- Interpreter -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python10" class="code python">
+                      </code></pre>
+                  </div>
 
-                                <!-- Interpreter -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python10" class="code python">
-                                            </code></pre>
-                                    </div>
-
-                                </div>
-
-                                <p class="section">
-                                    Now we can put everything together:
-                                </p>
-
-                                <!-- Final Expl -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python11" class="code python">
-                                            </code></pre>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!--Advanced Applications -->
-        <div class="row" id="λ-Applications">
+                <p class="section">
+                  Now we can put everything together:
+                </p>
+
+                <!-- Final Expl -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python11" class="code python">
+                      </code></pre>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Advanced Applications -->
+    <div class="row" id="λ-Applications">
+      <div class="col l10 offset-l1 s12 m12">
+
+        <div class="blue-grey darken-4">
+          <div class="row">
             <div class="col l10 offset-l1 s12 m12">
 
-                <div class=" blue-grey darken-4">
-                    <div class="row">
-                        <div class="col l10 offset-l1 s12 m12">
+              <div class="card-content grey-text text-lighten-4 projectText">
+                <h5 class="orange-text text-darken-2 projectTitle">Advanced
+                  Applications
+                </h5>
 
-                            <div class="card-content grey-text text-lighten-4 projectText">
-                                <h5 class="orange-text text-darken-2 projectTitle">Advanced
-                                    Applications
-                                </h5>
+                <p class="section">
+                  Now that we have completed our basic tokenize-parse-interpret
+                  system, we can use it to calculate some advanced expressions
+                  and and represent features such as boolean logic, arithmetic
+                  expressions and datastructures such as lists.
+                </p>
 
-                                <p class="section">
-                                    Now that we have completed our basic tokenize-parse-interpret
-                                    system, we can use it to calculate some advanced expressions and
-                                    and represent features such as boolean logic, arithmetic
-                                    expressions and datastructures such as lists.
-                                </p>
+                <h5
+                  class="blue-text text-darken-1 projectSubTitle"
+                  id="Boolean"
+                >Boolean Logic
+                </h5>
 
-                                <h5
-                                    class="blue-text text-darken-1 projectSubTitle"
-                                    id="Boolean"
-                                >Boolean Logic
-                                </h5>
+                <p class="section">
+                  There are no boolean variables in our λ-calculus yet, so we
+                  need to define them:<br />
+                  The standard way of modeling truth values is the following:
+                </p>
 
-                                <p class="section">
-                                    There are no boolean variables in our λ-calculus yet, so we need
-                                    to define them:<br />
-                                    The standard way of modeling truth values is the following:
-                                </p>
+                <div class="row">
+                  <div class="col l10 offset-l1 s12">
+                    <table class="highlight grey darken-3 white-text">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>λ-expression</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
 
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12">
-                                        <table class="highlight grey darken-3 white-text">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>λ-expression</th>
-                                                    <th>Description</th>
-                                                </tr>
-                                            </thead>
+                      <tbody>
+                        <tr>
+                          <td> TRUE </td>
+                          <td>λx.λy.x</td>
+                          <td>Function that takes two parameters, returns the
+                            first</td>
+                        </tr>
+                        <tr>
+                          <td> FALSE </td>
+                          <td>λx.λy.y</td>
+                          <td>Function that takes two parameters, returns the
+                            second</td>
+                        </tr>
 
-                                            <tbody>
-                                                <tr>
-                                                    <td> TRUE </td>
-                                                    <td>λx.λy.x</td>
-                                                    <td>Function that takes two parameters, returns
-                                                        the first</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> FALSE </td>
-                                                    <td>λx.λy.y</td>
-                                                    <td>Function that takes two parameters, returns
-                                                        the second</td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    Now we can define the boolean operators:
-                                </p>
-
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12">
-                                        <table class="highlight grey darken-3 white-text">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>λ-expression</th>
-                                                    <th>Description</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td> AND </td>
-                                                    <td>λp.λq.((p q) p)</td>
-                                                    <td>
-                                                        Evaluates the logical AND between p and q
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> OR </td>
-                                                    <td>λp.λq.((p p) q)</td>
-                                                    <td>
-                                                        Evaluates the logical OR between p and q</td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <h5 class="green-text lighten-2">How does that work?
-                                </h5>
-                                <p>
-                                    If we look at the AND operator, we see that in its body it
-                                    evaluates "((p q) p)"<br />
-                                    Lets immagine that p is TRUE for now. If we look at the encoding
-                                    for the TRUE value, we see that TRUE is just a function that
-                                    expects 2 parameters and returns the first one.
-                                    <br />
-                                    The body of the AND operator does exactly this: It "calls" the
-                                    TRUE function with the parameters "q" and "p" and returns the
-                                    result.
-                                    <br />
-                                    We said that p is TRUE, therefore it will return the first
-                                    argument it sees, in this case it will be the value "q".
-                                    <br />
-                                    That makes sense, because if the first parameter to the AND
-                                    function is TRUE, the total output depends just on the other
-                                    parameter.
-                                    <br />
-                                    In the other case, if we say p is FALSE, it will return the
-                                    second argument it receives. In the case of the AND operator,
-                                    the second argument is also "p". That means it will always
-                                    return itself, which we already defined to be FALSE.
-                                    <br />
-                                    This concludes the AND operator. The OR operator works in a
-                                    similar way.
-                                </p>
-
-                                <p class="section">The following code snipet shows the result of
-                                    such an evaluation:</p>
-                                <!-- Final Expl -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python12" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">Here you can see the full AST of this input:</p>
-                                <img class="center inlineImg" src="/projects/AND.png" />
-
-                                <h5
-                                    class="blue-text text-darken-1 projectSubTitle"
-                                    id="Arithmetic"
-                                >Arithmetic operations
-                                </h5>
-
-                                <p class="section">
-                                    There is also a way to implement numbers in the λ-calculus.
-                                    <br />
-                                    The idea behind these church-numerals are the peano-axioms.
-                                </p>
-
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12">
-                                        <table class="highlight grey darken-3 white-text">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>λ-expression</th>
-                                                    <th>Description</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td> ZERO </td>
-                                                    <td>λf.λx.x</td>
-                                                    <td>Encodes 0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> ONE </td>
-                                                    <td> λf.λx.(f x)</td>
-                                                    <td>Encodes 1</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> TWO </td>
-                                                    <td> λf.λx.(f (f x))</td>
-                                                    <td>Encodes 2</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> THREE </td>
-                                                    <td>
-                                                        λf.λx.(f (f (f x)))</td>
-                                                    <td>Encodes 3</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> ... </td>
-                                                    <td> ...</td>
-                                                    <td>...</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> N </td>
-                                                    <td>
-                                                        λf.λx.(f<sup>n</sup>
-                                                        x)</td>
-                                                    <td>Encodes n</td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <p class="section">
-                                    We can also define some basic functions:
-                                </p>
-
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12">
-                                        <table class="highlight grey darken-3 white-text">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>λ-expression</th>
-                                                    <th>Description</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td> SUCC </td>
-                                                    <td>λn.λf.λx.(f ((n f) x))</td>
-                                                    <td>
-                                                        Evaluates the successor of n
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> PLUS </td>
-                                                    <td>λm.λn.λf.λx.((m f) ((n f) x))</td>
-                                                    <td>
-                                                        Evaluates m+n</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> MULT </td>
-                                                    <td>λm.λn.λf.(m (n f))</td>
-                                                    <td>
-                                                        Evaluates m*n</td>
-
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <p class="section">The following code snipet shows the result of
-                                    such an evaluation:</p>
-                                <!-- Final Expl -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python13" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">Here you can see the full AST of this input:</p>
-                                <img class="center inlineImg" src="/projects/MULT.png" />
-
-                                <h5
-                                    class="blue-text text-darken-1 projectSubTitle"
-                                    id="Recursion"
-                                >Recursion
-                                </h5>
-
-                                <p class="section">
-                                    In the λ-calculus a Function cannot call itself, therefore we
-                                    need to find another way of representing recursion.
-                                    <br />
-                                    One possibility is a so called "Fixed-point combinator", in
-                                    particular the "Y-combinator".
-                                </p>
-
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12">
-                                        <table class="highlight grey darken-3 white-text">
-                                            <thead>
-                                                <tr>
-                                                    <th>Name</th>
-                                                    <th>λ-expression</th>
-                                                    <th>Description</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                <tr>
-                                                    <td> Y </td>
-                                                    <td>λf.(λx.(f (x x)) λx.(f (x x))),</td>
-                                                    <td>Encodes the Y-combinator</td>
-                                                </tr>
-                                                <tr>
-                                                    <td> FACT_STEP </td>
-                                                    <td>
-                                                        λg.λn.(((IFTHENELSE (ISZERO n)) ONE) ((MULT
-                                                        n) (g (PRED n))))</td>
-                                                    <td>Encodes the non recursive part of the
-                                                        factorial-function</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td> FIB_STEP </td>
-                                                    <td>
-                                                        λg.λn.(((IFTHENELSE ((LEQ n) TWO)) ONE)
-                                                        ((PLUS (g (PRED n))) (g (PRED (PRED n)))))</td>
-                                                    <td>Encodes the non recursive part of the
-                                                        fibonacci-function</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td> FACT </td>
-                                                    <td> (Y FACT_STEP)</td>
-                                                    <td>Encodes the factorial-function</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td> FIB </td>
-                                                    <td>
-                                                        (Y FIB_STEP)</td>
-                                                    <td>Encodes the fibonacci-function</td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-
-                                <p class="section">The following code snipet shows the result of
-                                    such an evaluation:</p>
-                                <!-- Final Expl -->
-                                <div class="row">
-                                    <div class="col l10 offset-l1 s12 m12">
-                                        <pre><code id="code-python14" class="code python">
-                                            </code></pre>
-                                    </div>
-                                </div>
-
-                                <p class="section">Here you can see the full AST of this input:</p>
-                                <img class="center inlineImgBig" src="/projects/FACT.png" />
-
-                            </div>
-                        </div>
-                    </div>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Conclusion Card -->
-        <div class="row" id="λ-Conclusion">
+                <p class="section">
+                  Now we can define the boolean operators:
+                </p>
+
+                <div class="row">
+                  <div class="col l10 offset-l1 s12">
+                    <table class="highlight grey darken-3 white-text">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>λ-expression</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td> AND </td>
+                          <td>λp.λq.((p q) p)</td>
+                          <td>
+                            Evaluates the logical AND between p and q
+                          </td>
+                        </tr>
+                        <tr>
+                          <td> OR </td>
+                          <td>λp.λq.((p p) q)</td>
+                          <td>
+                            Evaluates the logical OR between p and q</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <h5 class="green-text lighten-2">How does that work?
+                </h5>
+                <p>
+                  If we look at the AND operator, we see that in its body it
+                  evaluates "((p q) p)"<br />
+                  Lets immagine that p is TRUE for now. If we look at the
+                  encoding for the TRUE value, we see that TRUE is just a
+                  function that expects 2 parameters and returns the first one.
+                  <br />
+                  The body of the AND operator does exactly this: It "calls" the
+                  TRUE function with the parameters "q" and "p" and returns the
+                  result.
+                  <br />
+                  We said that p is TRUE, therefore it will return the first
+                  argument it sees, in this case it will be the value "q".
+                  <br />
+                  That makes sense, because if the first parameter to the AND
+                  function is TRUE, the total output depends just on the other
+                  parameter.
+                  <br />
+                  In the other case, if we say p is FALSE, it will return the
+                  second argument it receives. In the case of the AND operator,
+                  the second argument is also "p". That means it will always
+                  return itself, which we already defined to be FALSE.
+                  <br />
+                  This concludes the AND operator. The OR operator works in a
+                  similar way.
+                </p>
+
+                <p class="section">The following code snipet shows the result of
+                  such an evaluation:</p>
+                <!-- Final Expl -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python12" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">Here you can see the full AST of this input:</p>
+                <img class="center inlineImg" src="/projects/AND.png" />
+
+                <h5
+                  class="blue-text text-darken-1 projectSubTitle"
+                  id="Arithmetic"
+                >Arithmetic operations
+                </h5>
+
+                <p class="section">
+                  There is also a way to implement numbers in the λ-calculus.
+                  <br />
+                  The idea behind these church-numerals are the peano-axioms.
+                </p>
+
+                <div class="row">
+                  <div class="col l10 offset-l1 s12">
+                    <table class="highlight grey darken-3 white-text">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>λ-expression</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td> ZERO </td>
+                          <td>λf.λx.x</td>
+                          <td>Encodes 0</td>
+                        </tr>
+                        <tr>
+                          <td> ONE </td>
+                          <td> λf.λx.(f x)</td>
+                          <td>Encodes 1</td>
+                        </tr>
+                        <tr>
+                          <td> TWO </td>
+                          <td> λf.λx.(f (f x))</td>
+                          <td>Encodes 2</td>
+                        </tr>
+                        <tr>
+                          <td> THREE </td>
+                          <td>
+                            λf.λx.(f (f (f x)))</td>
+                          <td>Encodes 3</td>
+                        </tr>
+                        <tr>
+                          <td> ... </td>
+                          <td> ...</td>
+                          <td>...</td>
+                        </tr>
+                        <tr>
+                          <td> N </td>
+                          <td>
+                            λf.λx.(f<sup>n</sup>
+                            x)</td>
+                          <td>Encodes n</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <p class="section">
+                  We can also define some basic functions:
+                </p>
+
+                <div class="row">
+                  <div class="col l10 offset-l1 s12">
+                    <table class="highlight grey darken-3 white-text">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>λ-expression</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td> SUCC </td>
+                          <td>λn.λf.λx.(f ((n f) x))</td>
+                          <td>
+                            Evaluates the successor of n
+                          </td>
+                        </tr>
+                        <tr>
+                          <td> PLUS </td>
+                          <td>λm.λn.λf.λx.((m f) ((n f) x))</td>
+                          <td>
+                            Evaluates m+n</td>
+                        </tr>
+                        <tr>
+                          <td> MULT </td>
+                          <td>λm.λn.λf.(m (n f))</td>
+                          <td>
+                            Evaluates m*n</td>
+
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <p class="section">The following code snipet shows the result of
+                  such an evaluation:</p>
+                <!-- Final Expl -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python13" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">Here you can see the full AST of this input:</p>
+                <img class="center inlineImg" src="/projects/MULT.png" />
+
+                <h5
+                  class="blue-text text-darken-1 projectSubTitle"
+                  id="Recursion"
+                >Recursion
+                </h5>
+
+                <p class="section">
+                  In the λ-calculus a Function cannot call itself, therefore we
+                  need to find another way of representing recursion.
+                  <br />
+                  One possibility is a so called "Fixed-point combinator", in
+                  particular the "Y-combinator".
+                </p>
+
+                <div class="row">
+                  <div class="col l10 offset-l1 s12">
+                    <table class="highlight grey darken-3 white-text">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>λ-expression</th>
+                          <th>Description</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td> Y </td>
+                          <td>λf.(λx.(f (x x)) λx.(f (x x))),</td>
+                          <td>Encodes the Y-combinator</td>
+                        </tr>
+                        <tr>
+                          <td> FACT_STEP </td>
+                          <td>
+                            λg.λn.(((IFTHENELSE (ISZERO n)) ONE) ((MULT n) (g
+                            (PRED n))))</td>
+                          <td>Encodes the non recursive part of the
+                            factorial-function</td>
+                        </tr>
+
+                        <tr>
+                          <td> FIB_STEP </td>
+                          <td>
+                            λg.λn.(((IFTHENELSE ((LEQ n) TWO)) ONE) ((PLUS (g
+                            (PRED n))) (g (PRED (PRED n)))))</td>
+                          <td>Encodes the non recursive part of the
+                            fibonacci-function</td>
+                        </tr>
+
+                        <tr>
+                          <td> FACT </td>
+                          <td> (Y FACT_STEP)</td>
+                          <td>Encodes the factorial-function</td>
+                        </tr>
+
+                        <tr>
+                          <td> FIB </td>
+                          <td>
+                            (Y FIB_STEP)</td>
+                          <td>Encodes the fibonacci-function</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <p class="section">The following code snipet shows the result of
+                  such an evaluation:</p>
+                <!-- Final Expl -->
+                <div class="row">
+                  <div class="col l10 offset-l1 s12 m12">
+                    <pre><code id="code-python14" class="code python">
+                      </code></pre>
+                  </div>
+                </div>
+
+                <p class="section">Here you can see the full AST of this input:</p>
+                <img class="center inlineImgBig" src="/projects/FACT.png" />
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conclusion Card -->
+    <div class="row" id="λ-Conclusion">
+      <div class="col l10 offset-l1 s12 m12">
+
+        <div class="card blue-grey darken-4">
+          <div class="row">
             <div class="col l10 offset-l1 s12 m12">
 
-                <div class="card blue-grey darken-4">
-                    <div class="row">
-                        <div class="col l10 offset-l1 s12 m12">
+              <div class="card-content grey-text text-lighten-4 projectText">
+                <h5
+                  class="orange-text text-darken-2 projectTitle"
+                >Conclusion</h5>
 
-                            <div class="card-content grey-text text-lighten-4 projectText">
-                                <h5 class="orange-text text-darken-2 projectTitle">Conclusion</h5>
+                <p class="section">
+                  Is this the best possible implementation? Probably not,
+                  however, it is where I am going to leave it for now. I
+                  achieved my goal of learning the basics of λ-calculus and
+                  created my own little programming to dynamically evaluate
+                  λ-expressions.
+                </p>
 
-                                <p class="section">
-                                    Is this the best possible implementation? Probably not, however,
-                                    it is where I am going to leave it for now. I achieved my goal
-                                    of learning the basics of λ-calculus and created my own little
-                                    programming to dynamically evaluate λ-expressions.
-                                </p>
+                <p class="section">
+                  However, I have also learned that my implementation is slow
+                  and inefficient, because, in my implementation, evaluating a
+                  result relies on recursiveley renaming all the variables in
+                  the subtree. This is very slow, and in general my code is not
+                  well optimized.
+                </p>
 
-                                <p class="section">
-                                    However, I have also learned that my implementation is slow and
-                                    inefficient, because, in my implementation, evaluating a result
-                                    relies on recursiveley renaming all the variables in the
-                                    subtree. This is very slow, and in general my code is not well
-                                    optimized.
-                                </p>
+                <p class="section">
+                  The code shown above is just a small subset of the actual
+                  programm. If you want to take a further look on the project,
+                  you can find the full code on my
+                  <a
+                    href="https://github.com/ManuelLerchner/Random-Coding-Projects/tree/master/Python/LambdaCalculus"
+                  >Github-Page</a>.
 
-                                <p class="section">
-                                    The code shown above is just a small subset of the actual
-                                    programm. If you want to take a further look on the project, you
-                                    can find the full code on my
-                                    <a
-                                        href="https://github.com/ManuelLerchner/Random-Coding-Projects/tree/master/Python/LambdaCalculus"
-                                    >Github-Page</a>.
+                </p>
 
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
 
-        <script src="/js/lambdaCalculus.js"></script>
-        <script>hljs.highlightAll();</script>
-    </body>
+    <script src="/js/lambdaCalculus.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
 </html>

@@ -9,6 +9,14 @@ dotenv.config({ path: "./config/config.env" });
 
 class EMailService {
     constructor() {
+        // Check if email configuration is available
+        if (!process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.EMAIL_REDIRECT_URI || 
+            !process.env.REFRESH_TOKEN || !process.env.EMAIL_USER || !process.env.EMAIL_RECEIVERS) {
+            console.log("Email service not configured - email functionality will be disabled");
+            this.transporter = null;
+            return;
+        }
+
         const myOAuth2Client = new OAuth2(
             process.env.CLIENT_ID,
             process.env.CLIENT_SECRET,
@@ -41,6 +49,12 @@ class EMailService {
     }
 
     sendMail(subject, text, sendToEveryone = false) {
+        // Skip if email is not configured
+        if (!this.transporter) {
+            console.log(`Email not configured - would send: '${subject}' - '${text.replace(/\n/g, " ")}'`);
+            return;
+        }
+
         let receivers = process.env.EMAIL_RECEIVERS.split(";");
 
         if (!sendToEveryone) {

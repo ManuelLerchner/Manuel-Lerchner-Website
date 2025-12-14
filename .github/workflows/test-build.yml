@@ -10,6 +10,9 @@ on:
 jobs:
   test-build:
     runs-on: ubuntu-latest
+    
+    env:
+      TEST_PORT: 8080
 
     steps:
       - name: Checkout code
@@ -34,7 +37,7 @@ jobs:
           echo "Waiting for server to start..."
           SERVER_UP=false
           for i in {1..30}; do
-            if curl -s http://localhost:8080 > /dev/null; then
+            if curl -s http://localhost:$TEST_PORT > /dev/null; then
               echo "Server is up!"
               SERVER_UP=true
               break
@@ -50,7 +53,7 @@ jobs:
           
           # Make a request and check for HTML output
           echo "Testing HTML output..."
-          RESPONSE=$(curl -s http://localhost:8080)
+          RESPONSE=$(curl -s http://localhost:$TEST_PORT)
           
           # Check if response contains HTML tags
           if echo "$RESPONSE" | grep -q "<html" && echo "$RESPONSE" | grep -q "</html>"; then

@@ -1,0 +1,78 @@
+name: Test Build
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+  workflow_dispatch:
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+    
+    env:
+      # Port must match the server's production port (defaults to 8080)
+      TEST_PORT: 8080
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start server and test HTML output
+        run: |
+          # Start the server in the background
+          npm start &
+          SERVER_PID=$!
+          
+          # Wait for server to start (max 30 seconds)
+          echo "Waiting for server to start..."
+          SERVER_UP=false
+          for i in {1..30}; do
+            if curl -s http://localhost:$TEST_PORT > /dev/null; then
+              echo "Server is up!"
+              SERVER_UP=true
+              break
+            fi
+            sleep 1
+          done
+          
+          if [ "$SERVER_UP" = false ]; then
+            echo "❌ Error: Server failed to start within 30 seconds"
+            kill $SERVER_PID 2>/dev/null || true
+            exit 1
+          fi
+          
+          # Make a request and check for HTML output
+          echo "Testing HTML output..."
+          RESPONSE=$(curl -s http://localhost:$TEST_PORT)
+          
+          # Check if response contains HTML tags
+          if echo "$RESPONSE" | grep -q "<html" && echo "$RESPONSE" | grep -q "</html>"; then
+            echo "✅ Success! HTML output detected"
+            echo "Sample output (first 500 chars):"
+            echo "$RESPONSE" | head -c 500
+            EXIT_CODE=0
+          else
+            echo "❌ Error: No HTML output detected"
+            echo "Response received:"
+            echo "$RESPONSE"
+            EXIT_CODE=1
+          fi
+          
+          # Clean up
+          kill $SERVER_PID 2>/dev/null || true
+          
+          exit $EXIT_CODE

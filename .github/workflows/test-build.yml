@@ -1,0 +1,63 @@
+name: Test Build
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+  workflow_dispatch:
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start server and test HTML output
+        run: |
+          # Start the server in the background
+          npm start &
+          SERVER_PID=$!
+          
+          # Wait for server to start (max 30 seconds)
+          echo "Waiting for server to start..."
+          for i in {1..30}; do
+            if curl -s http://localhost:8080 > /dev/null; then
+              echo "Server is up!"
+              break
+            fi
+            sleep 1
+          done
+          
+          # Make a request and check for HTML output
+          echo "Testing HTML output..."
+          RESPONSE=$(curl -s http://localhost:8080)
+          
+          # Check if response contains HTML tags
+          if echo "$RESPONSE" | grep -q "<html" && echo "$RESPONSE" | grep -q "</html>"; then
+            echo "✅ Success! HTML output detected"
+            echo "Sample output (first 500 chars):"
+            echo "$RESPONSE" | head -c 500
+            EXIT_CODE=0
+          else
+            echo "❌ Error: No HTML output detected"
+            echo "Response received:"
+            echo "$RESPONSE"
+            EXIT_CODE=1
+          fi
+          
+          # Clean up
+          kill $SERVER_PID
+          
+          exit $EXIT_CODE

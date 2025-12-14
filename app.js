@@ -74,7 +74,7 @@ IOHTTP.handleEvents();
 
 //Ports
 var HTTP_PORT =
-    process.env.NODE_ENV == "developement" ? process.env.HTTP_DEV_PORT : process.env.HTTP_PORT;
+    process.env.NODE_ENV == "developement" ? (process.env.HTTP_DEV_PORT || 3000) : (process.env.HTTP_PORT || 8080);
 
 //Run Servers
 serverHTTP.listen(

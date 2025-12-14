@@ -32,13 +32,21 @@ jobs:
           
           # Wait for server to start (max 30 seconds)
           echo "Waiting for server to start..."
+          SERVER_UP=false
           for i in {1..30}; do
             if curl -s http://localhost:8080 > /dev/null; then
               echo "Server is up!"
+              SERVER_UP=true
               break
             fi
             sleep 1
           done
+          
+          if [ "$SERVER_UP" = false ]; then
+            echo "❌ Error: Server failed to start within 30 seconds"
+            kill $SERVER_PID 2>/dev/null || true
+            exit 1
+          fi
           
           # Make a request and check for HTML output
           echo "Testing HTML output..."
@@ -58,6 +66,6 @@ jobs:
           fi
           
           # Clean up
-          kill $SERVER_PID
+          kill $SERVER_PID 2>/dev/null || true
           
           exit $EXIT_CODE

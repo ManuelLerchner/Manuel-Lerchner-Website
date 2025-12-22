@@ -22,7 +22,7 @@
         "express-subdomain": "^1.0.6",
         "googleapis": "^169.0.0",
         "hbs": "^4.1.2",
-        "mongoose": "^6.13.6",
+        "mongoose": "^9.0.2",
         "morgan": "^1.10.1",
         "nodemailer": "^7.0.11",
         "onoff": "^6.0.3",
